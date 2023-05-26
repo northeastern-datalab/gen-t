@@ -1,0 +1,3 @@
+We include two example Source Tables from the TP-TR Large Benchmark (in folder titled ``Source Tables``).
+In addition, we include originating tables (in a folder titled ``Originating Tables``), for each Source Table in separate subfolders. For each Source Table, we include the set of originating tables for Gen-T and baseline method ALITE-PS. 
+Lastly, we include Output Tables (in a folder titled ``Output Tables``) of Gen-T and ALITE-PS for each Source Table, with each output table in a CSV file.
