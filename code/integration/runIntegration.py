@@ -2,77 +2,68 @@ import time
 import glob
 import pandas as pd
 import math
+import argparse
 import table_integration, alite_fd_original
 from tqdm import tqdm
+import os
+import json
 import sys
 sys.path.append('../discovery/')
 from evaluatePaths import setTDR, bestMatchingTuples, instanceSimilarity
 from calcDivergence import table_Dkl,getQueryConditionalVals
 
 if __name__ == '__main__':
-    # benchmark = 't2d_gold'
-    # benchmark = 't2d_gold_mtTables'
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--benchmark", type=str, default="tpch", choices=['tpch', 'santos_large_tpch', 'tpch_groundtruth', 'tpch_small', 'tpch_large',
+                                                                          't2d_gold', 'TUS_t2d_gold', 'wdc_t2d_gold'])
+    parser.add_argument("--timeout", type=int, default=25263) # 7 hrs for tpch
+    parser.add_argument("--genT", type=int, default=1) # 1 if candidate tables were pruned to originating tables in Gen-T, else 0
+    parser.add_argument("--doPS", type=int, default=1) # 1 if perform projection and selection, else 0
     
-    # benchmark = 'TUS_t2d_gold'
-    # benchmark = 'TUS_t2d_gold_mtTables'
+    hp = parser.parse_args()
     
-    # benchmark = 'wdc_t2d_gold'
-    # benchmark = 'wdc_t2d_gold_mtTables'
-    # timeout = 100 # 100 seconds for t2d
-    # ========= TPCH Variations
+    benchmark = hp.benchmark
     # benchmark = 'santos_large_tpch'
-    # benchmark = 'santos_large_tpch_groundtruth'
-    # benchmark = 'tpch'
-    # benchmark = 'tpch_groundtruth'
-    # benchmark = 'tpch_0_groundtruth'
     
-    # benchmark = 'santos_large_tpch_mtTables'
-    # benchmark = 'tpch_mtTables'
-    # benchmark = 'tpch_groundtruth_mtTables'
-    # benchmark = 'tpch_small_mtTables_groundtruth'
-    # benchmark = 'santos_large_tpch_mtTables_groundtruth'
-    # benchmark = 'tpch_mtTables_groundtruth'
-    # benchmark = 'tpch_large_mtTables_groundtruth'
-    
-    
-    # benchmark = 'tpch_small'
-    # benchmark = 'tpch_small_mtTables'
-    # benchmark = 'tpch_small_groundtruth'
-    
-    benchmark = 'tpch_large'
-    # benchmark = 'tpch_large_mtTables'
-    # benchmark = 'tpch_large_groundtruth'
-    timeout = 25263 # 7 hrs for tpch
-    runAfterMt = 0
-    if '_mtTables' in benchmark: runAfterMt = 1
-    performProjSel = 1
-    outputDir = "output_tables/"
-    if runAfterMt:
-        outputDir = "mtAlite_output_tables/"
-    elif performProjSel:
-        outputDir = "output_tables_projSel/"
-        
-    benchmarkTitle = benchmark
-    # benchmarkTitle = 'santos_large_tpch'
+    OUTPUT_DIR = "output_tables/%s/"%(benchmark)
+    if hp.genT:
+        OUTPUT_DIR = "genT_output_tables/%s/"%(benchmark)
+    elif hp.doPS:
+        OUTPUT_DIR = "output_tables_projSel/%s/"%(benchmark)
+    if not os.path.exists(OUTPUT_DIR):
+      os.makedirs(OUTPUT_DIR)
     print("========= Benchmark: ", benchmark)
-    FILEPATH = '/home/gfan/Datasets/%s/queries/' % (benchmarkTitle)  
-    if '_mtTables' in benchmark and '_groundtruth' not in benchmark: FILEPATH = '/home/gfan/Datasets/%s/queries/' % (benchmark.split('_mtTables')[0])  
-    elif '_mtTables_groundtruth' in benchmark: FILEPATH = '/home/gfan/Datasets/%s/queries/' % (benchmark.split('_mtTables_groundtruth')[0])  
-    print(FILEPATH)
+    FILEPATH = '/home/gfan/Datasets/%s/queries/' % (benchmark)  
+    if '_groundtruth' in benchmark: FILEPATH = '/home/gfan/Datasets/%s/queries/' % (benchmark.split('_groundtruth')[0])  
+
     datasets = glob.glob(FILEPATH+'*.csv')
-    allTDR_recall, allTDR_prec, allInstanceSim, allDkl = {k: [] for k in ['simple', 'oneJoin', 'manyJoins', 'all']}, {k: [] for k in ['simple', 'oneJoin', 'manyJoins', 'all']}, {k: [] for k in ['simple', 'oneJoin', 'manyJoins', 'all']}, {k: [] for k in ['simple', 'oneJoin', 'manyJoins', 'all']}
-    allRuntimes = {k: [] for k in ['simple', 'oneJoin', 'manyJoins', 'all']}
+    allTDR_recall, allTDR_prec, allInstanceSim, allDkl = {}, {}, {}, {}
+    allRuntimes = {}
     numSources = 0
+    saved_sources = []
     timedOutSources = []
     avgSizeOutput = []
     avgSizeRatio = []
+    individual_prec_recall = {}
+    runtimes = {}
+    
+    
+    
+    originatingTablePath = "../results_candidate_tables/%s/originatingTables.json" % (benchmark)
+    if not os.path.isfile(originatingTablePath):
+        if hp.genT: print("Need to Generate Originating Tables before finishing Gen-T")
+        else: allOriginatingTableDict = None
+    else: 
+        with open(originatingTablePath) as json_file: allOriginatingTableDict = json.load(json_file)
+            
     algStartTime = time.time()
-    if '_mtTables' in benchmark: 
+    if hp.genT: 
         print("Gen-T, Given the Candidate Tables from Set Similarity")
     else:         
         print("ALITE Baseline, Given the Candidate Tables from Set Similarity")
     for indx in tqdm(range(0, len(datasets))):
         source_table = datasets[indx].split(FILEPATH)[-1]
+        if allOriginatingTableDict and source_table not in allOriginatingTableDict: continue
         sourceDf = pd.read_csv(FILEPATH+source_table)
         print("\t=========== %d) Source Table: %s =========== " % (indx, source_table))
         print("Source has %d cols, %d rows --> %d total values" % (sourceDf.shape[1], sourceDf.shape[0], sourceDf.shape[0]*sourceDf.shape[1]))
@@ -91,11 +82,13 @@ if __name__ == '__main__':
         queryValPairs = getQueryConditionalVals(sourceDf, primaryKey)
         startTime = time.time()
         # RUN WITH MT
-        if runAfterMt:
-            timed_out, noCandidates, numOutputVals = table_integration.main(benchmark, source_table, timeout)
+        if hp.genT:
+            timed_out, noCandidates, numOutputVals = table_integration.main(benchmark, source_table, allOriginatingTableDict[source_table], hp.timeout)
         # RUN BASELINE
         else:
-            timed_out, noCandidates, numOutputVals = alite_fd_original.main(benchmark, source_table, performProjSel, timeout)
+            candidateTablePath = "../results_candidate_tables/%s/candidateTables.json" % (benchmark)
+            with open(candidateTablePath) as json_file: allCandidateTableDict = json.load(json_file)
+            timed_out, noCandidates, numOutputVals = alite_fd_original.main(benchmark, source_table, allCandidateTableDict[source_table], hp.doPS, hp.timeout)
         
         if timed_out: 
             print("\t\t\tAlite Timed out for Source Table %s after %.3f seconds =================================" % (source_table, (time.time() - startTime)))
@@ -105,10 +98,14 @@ if __name__ == '__main__':
             print("\t\t\tAlite Has No Candidates for Source Table %s after %.3f seconds =================================" % (source_table, (time.time() - startTime)))
             continue
         print("\t\t\tAlite Finished for Source Table %s in %.3f seconds (%.3f minutes), \n Output Table of Size %d =================================" % (source_table, (time.time() - startTime), (time.time() - startTime)/60, numOutputVals))
+        runtimes[source_table] = time.time() - startTime
         avgSizeOutput.append(numOutputVals)
         avgSizeRatio.append(numOutputVals/(sourceDf.shape[0]*sourceDf.shape[1]))
-        fd_result = outputDir + benchmark+source_table
+        fd_result = OUTPUT_DIR+source_table
         fd_result = pd.read_csv(fd_result)
+        
+        timed_out = False
+        noCandidates = False
         # Evaluation
         print("BEGIN Evaluation")
         TDR_recall, TDR_precision = setTDR(sourceDf, fd_result)
@@ -117,56 +114,78 @@ if __name__ == '__main__':
         instanceSim = instanceSimilarity(sourceDf, bestMatchingDf, primaryKey)
         bestMatchingDf = bestMatchingDf[sourceDf.columns]
         tableDkl, _, colDkls = table_Dkl(sourceDf, bestMatchingDf, primaryKey, queryValPairs, math.inf, log=1)
-        if tableDkl == 0.0 or TDR_recall == 1.0 or TDR_precision == 1.0 or instanceSim == 1.0:
-            print(" !!!! FOUND COMPLETE PATH !!!")
 
         print("=== FINISHED Source %s with \n TDR Recall = %.3f, TDR Precision = %.3f, instanceSim = %.3f, KL-DIVERGENCE = %.3f  === " % (source_table, TDR_recall, TDR_precision, instanceSim, tableDkl))
         print("\t\t\t=========== FINISHED in %.3f seconds (%.3f minutes) =================================" % ((time.time() - startTime), (time.time() - startTime)/60))
+        
+        try: f1_score = 2 * (TDR_precision * TDR_recall) / (TDR_precision + TDR_recall)
+        except: f1_score = 0
+        individual_prec_recall[source_table] = {'Precision': TDR_precision, 'Recall': TDR_recall,
+                                                'F1_Score': f1_score}
+        
+        curr_metrics = [TDR_recall, TDR_precision, instanceSim, tableDkl, time.time() - startTime]
         if 'tpch' in benchmark and not timed_out and not noCandidates:
             if 'psql_many' in source_table:
-                allTDR_recall['manyJoins'].append(TDR_recall)
-                allTDR_prec['manyJoins'].append(TDR_precision)
-                allInstanceSim['manyJoins'].append(instanceSim)
-                allDkl['manyJoins'].append(tableDkl)
-                allRuntimes['manyJoins'].append(time.time() - startTime)
+                for metricIdx, metric_dict in enumerate([allTDR_recall, allTDR_prec, allInstanceSim, allDkl, allRuntimes]):
+                    if 'manyJoins' not in metric_dict:
+                        metric_dict['manyJoins'] = []
+                    metric_dict['manyJoins'].append(curr_metrics[metricIdx])
             elif 'psql_edge' in source_table:
-                allTDR_recall['simple'].append(TDR_recall)
-                allTDR_prec['simple'].append(TDR_precision)
-                allInstanceSim['simple'].append(instanceSim)
-                allDkl['simple'].append(tableDkl)
-                allRuntimes['simple'].append(time.time() - startTime)
+                for metricIdx, metric_dict in enumerate([allTDR_recall, allTDR_prec, allInstanceSim, allDkl, allRuntimes]):
+                    if 'simple' not in metric_dict:
+                        metric_dict['simple'] = []
+                    metric_dict['simple'].append(curr_metrics[metricIdx])
             else:
-                allTDR_recall['oneJoin'].append(TDR_recall)
-                allTDR_prec['oneJoin'].append(TDR_precision)
-                allInstanceSim['oneJoin'].append(instanceSim)
-                allDkl['oneJoin'].append(tableDkl)
-                allRuntimes['oneJoin'].append(time.time() - startTime)
-                
-        allTDR_recall['all'].append(TDR_recall)
-        allTDR_prec['all'].append(TDR_precision)
-        allInstanceSim['all'].append(instanceSim)
-        allDkl['all'].append(tableDkl)
-        allRuntimes['all'].append(time.time() - startTime)
+                for metricIdx, metric_dict in enumerate([allTDR_recall, allTDR_prec, allInstanceSim, allDkl, allRuntimes]):
+                    if 'oneJoin' not in metric_dict:
+                        metric_dict['oneJoin'] = []
+                    metric_dict['oneJoin'].append(curr_metrics[metricIdx])
+        
+        for metricIdx, metric_dict in enumerate([allTDR_recall, allTDR_prec, allInstanceSim, allDkl, allRuntimes]):
+            if 'all' not in metric_dict:
+                metric_dict['all'] = []
+            metric_dict['all'].append(curr_metrics[metricIdx])
         numSources += 1
+        saved_sources.append(source_table)
         
     print("\t\t\t=================================")
+    TIMESTATS_OUTPUT_DIR = "../experiment_logs/%s/"%(benchmark)
+    
+    EXPSTATS_OUTPUT_DIR = "../experiment_logs/%s/"%(benchmark)
+    if not os.path.exists(EXPSTATS_OUTPUT_DIR):
+      os.makedirs(EXPSTATS_OUTPUT_DIR)
+    sourceStats = {'num_sources': [numSources, saved_sources], 'timed_out_sources': [len(timedOutSources), timedOutSources]}
+    metricDicts = {'TDR_Recall': allTDR_recall, 'TDR_Precision': allTDR_prec, 'Instance_Similarity': allInstanceSim, 'Instance_Divergence': allInstanceSim, 'KL_Divergence': allDkl, 'Runtimes': allRuntimes}
+    for metricName, mDict in metricDicts.items():
+        sourceStats[metricName] = {}
+        for k, v_list in mDict.items():
+            if metricName == 'Instance_Divergence':
+                v_list = [1.0-val for val in v_list]
+            sourceStats[metricName][k] = round(sum(v_list)/len(v_list), 3)
+    print("Final KL_Divergence: ", sourceStats['KL_Divergence']['all'])
+    sizeLists = {'ouptut_size': avgSizeOutput, 'size_ratio': avgSizeRatio}
+    for sName, sList in sizeLists.items():
+        sourceStats[sName] = round(sum(sList)/len(sList), 3)
+
+    if hp.genT:
+        with open(EXPSTATS_OUTPUT_DIR+"final_genT_results.json", "w+") as f: json.dump(sourceStats, f, indent=4)
+        with open(EXPSTATS_OUTPUT_DIR+"each_source_result_genT.json", "w+") as f: json.dump(individual_prec_recall, f, indent=4)
+        with open(TIMESTATS_OUTPUT_DIR+"runtimes_genT.json") as timesJson:
+            matrix_times = json.load(timesJson)
+        for sTable, timesDict in matrix_times.items():
+            if '.csv' not in sTable: continue
+            if sTable in runtimes: matrix_times[sTable]['table_integration'] = runtimes[sTable]
+        with open(TIMESTATS_OUTPUT_DIR+"runtimes_genT.json", mode='w') as f: json.dump(matrix_times, f, indent=4)
+        
+    elif hp.doPS:
+        with open(EXPSTATS_OUTPUT_DIR+"final_alitePS_results.json", "w+") as f: json.dump(sourceStats, f, indent=4)
+        with open(EXPSTATS_OUTPUT_DIR+"each_source_result_alitePS.json", "w+") as f: json.dump(individual_prec_recall, f, indent=4)
+        with open(EXPSTATS_OUTPUT_DIR+"runtimes_alitePS.json", "w+") as f: json.dump(runtimes, f, indent=4)
+        
+    else:
+        with open(EXPSTATS_OUTPUT_DIR+"final_alite_results.json", "w+") as f: json.dump(sourceStats, f, indent=4)
+        with open(EXPSTATS_OUTPUT_DIR+"each_source_result_alite.json", "w+") as f: json.dump(individual_prec_recall, f, indent=4)
+        with open(EXPSTATS_OUTPUT_DIR+"runtimes_alite.json", "w+") as f: json.dump(runtimes, f, indent=4)
+    
     print("FINISHED ALL %d SOURCES IN %.3f seconds (%.3f minutes, %.3f hrs)" % (numSources, time.time() - algStartTime, (time.time() - algStartTime)/60, ((time.time() - algStartTime)/60)/60))
-    print("%d Sources Timed Out: " % (len(timedOutSources)), timedOutSources)
-    print("\t\t\t=========== TOTAL RESULTS ===========")
-    print("Average TDR Recall: %.3f, Average TDR Precision: %.3f" % (sum(allTDR_recall['all'])/len(allTDR_recall['all']), sum(allTDR_prec['all']) / len(allTDR_prec['all'])))
-    print("Average Instance Sim: %.3f, Average Dkl: %.3f" % (sum(allInstanceSim['all'])/len(allInstanceSim['all']), sum(allDkl['all'])/len(allDkl['all'])))
-    print("\t\tAverage Runtimes: %.3f sec (%.3f min)" % (sum(allRuntimes['all'])/len(allRuntimes['all']), (sum(allRuntimes['all'])/len(allRuntimes['all']))/60))
-    print("\t\t Average Size of Output: %d" % (sum(avgSizeOutput)/len(avgSizeOutput)))
-    print("\t\t Average Ratio of Output Size: %.3f" % (sum(avgSizeRatio)/len(avgSizeRatio)))
-    
-    if 'tpch' in benchmark:
-        print("\t\t\t=========== BREAK-DOWN OF RESULTS ===========")
-        print("PROJ/SEL Queries: TDR Recall: %.3f, TDR Precision: %.3f, Instance Sim: %.3f, Dkl: %.3f" % (sum(allTDR_recall['simple'])/len(allTDR_recall['simple']), sum(allTDR_prec['simple']) / len(allTDR_prec['simple']), sum(allInstanceSim['simple']) / len(allInstanceSim['simple']), sum(allDkl['simple']) / len(allDkl['simple'])))
-        print("\tRuntime: %.3f sec" % (sum(allRuntimes['simple']) / len(allRuntimes['simple'])))
-        
-        print("ONE-JOIN Queries: TDR Recall: %.3f, TDR Precision: %.3f, Instance Sim: %.3f, Dkl: %.3f" % (sum(allTDR_recall['oneJoin'])/len(allTDR_recall['oneJoin']), sum(allTDR_prec['oneJoin']) / len(allTDR_prec['oneJoin']), sum(allInstanceSim['oneJoin']) / len(allInstanceSim['oneJoin']), sum(allDkl['oneJoin']) / len(allDkl['oneJoin'])))
-        print("\tRuntime: %.3f sec" % (sum(allRuntimes['oneJoin']) / len(allRuntimes['oneJoin'])))
-        
-        print("MANY-JOINS Queries: TDR Recall: %.3f, TDR Precision: %.3f, Instance Sim: %.3f, Dkl: %.3f" % (sum(allTDR_recall['manyJoins'])/len(allTDR_recall['manyJoins']), sum(allTDR_prec['manyJoins']) / len(allTDR_prec['manyJoins']), sum(allInstanceSim['manyJoins']) / len(allInstanceSim['manyJoins']), sum(allDkl['manyJoins']) / len(allDkl['manyJoins'])))
-        print("\tRuntime: %.3f sec" % (sum(allRuntimes['manyJoins']) / len(allRuntimes['manyJoins'])))
-    
+   

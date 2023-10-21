@@ -61,15 +61,26 @@ def bestMatchingTuples(queryDf, integratedDf, primaryKey):
         keyVal = getattr(queryRow, primaryKey)
         qRowList = list(queryRow)
         correspondingRows = integratedDf.loc[integratedDf[primaryKey] == keyVal]
-        mostCorrectTuple, mostCorrectPercent = [], -0.1
+        mostCorrectTuple, mostCorrectPercent = [], [-0.1, 1.1, 1.1] # [% correct, % null, % err]
         for row in correspondingRows.itertuples(index=False):
             numCorrectVals = 0
+            numErroneousVals = 0
+            numNullifiedVals = 0
             for indx, qVal in enumerate(qRowList):
                 if qVal == list(row)[indx]: numCorrectVals += 1
                 elif pd.isna(qVal) and pd.isna(list(row)[indx]): numCorrectVals += 1
-            if numCorrectVals/len(qRowList) > mostCorrectPercent:
-                mostCorrectPercent = numCorrectVals/len(qRowList)
+                
+                if not pd.isna(list(row)[indx]) and qVal != list(row)[indx]: numErroneousVals += 1
+                if not pd.isna(qVal) and pd.isna(list(row)[indx]): numNullifiedVals += 1
+            
+            
+            if numCorrectVals/len(qRowList) > mostCorrectPercent[0]:
+                mostCorrectPercent = [numCorrectVals/len(qRowList), numNullifiedVals/len(qRowList), numErroneousVals/len(qRowList)]
                 mostCorrectTuple = list(row)
+            elif numCorrectVals/len(qRowList) == mostCorrectPercent[0]:
+                if numErroneousVals/len(qRowList) < mostCorrectPercent[2]: # has same number of correct values, but fewer erroneous values
+                    mostCorrectPercent = [numCorrectVals/len(qRowList), numNullifiedVals/len(qRowList), numErroneousVals/len(qRowList)]
+                    mostCorrectTuple = list(row)
         if mostCorrectTuple: bestMatchingTuples.append(mostCorrectTuple)
     bestMatchingDf = pd.DataFrame(bestMatchingTuples, columns=integratedDf.columns)
     if not bestMatchingTuples: return None
@@ -95,4 +106,32 @@ def instanceSimilarity(queryDf, integratedDf, primaryKey):
         tupleSim = numCommonVals / queryDf.shape[1]
         instanceSims.append(tupleSim)
     return sum(instanceSims) / queryDf.shape[0]
+
+def valueSimilarity(queryDf, integratedDf, primaryKey):
+    valueSims = []
+    for keyVal in queryDf[primaryKey]:
+        queryTuples = queryDf.loc[queryDf[primaryKey] == keyVal].values.tolist()
+        if len(queryTuples) == 0: continue # if keyVal is nan
+        queryTuple = queryTuples[0]
+        resultTuples = integratedDf.loc[integratedDf[primaryKey] == keyVal].values.tolist()
+        if len(resultTuples) == 0: continue
+        resultTuple = resultTuples[0]
+        numCommonVals = 0
+        numErrVals = 0
+        numNullVals = 0
+        for colIndx in range(queryDf.shape[1]):
+            # correct values: resulting tuple has same non-null value OR null value as source tuple
+            if queryTuple[colIndx] == resultTuple[colIndx]: numCommonVals += 1
+            elif pd.isna(queryTuple[colIndx]) and pd.isna(resultTuple[colIndx]): numCommonVals += 1
+            
+            # incorrect values: resulting tuple has different non-null value compared to non-null or null value in source tuple
+            if not pd.isna(resultTuple[colIndx]) and queryTuple[colIndx] != resultTuple[colIndx]: numErrVals += 1
+            
+            # null values
+            if not pd.isna(queryTuple[colIndx]) and pd.isna(resultTuple[colIndx]): numNullVals += 1
+            
+        # Normalized Value Similarity
+        valueSim = 0.5*(1 + (numCommonVals / queryDf.shape[1]) - (numErrVals / queryDf.shape[1]))        
+        valueSims.append(valueSim)
+    return sum(valueSims) / queryDf.shape[0]
     

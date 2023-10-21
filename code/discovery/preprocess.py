@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import json
 import sys
 sys.path.append('../')
 import utils
@@ -60,11 +61,11 @@ def preprocessForeignKeys(tableDfs, primaryKey, foreignKeys, sourceTable):
         
         
 def getTableDfs(benchmark, datasets, sourceTableName):
-    candidateTablePath = "../results_candidate_tables/%s/%s_candidateTables.pkl" % (benchmark, sourceTableName)
-    if not os.path.isfile(candidateTablePath): return None
-    candidateTableDict = utils.loadDictionaryFromPickleFile(candidateTablePath)
-    tableDfs = {}
+    candidateTablePath = "../results_candidate_tables/%s/candidateTables.json" % (benchmark)
     
+    if not os.path.isfile(candidateTablePath): return None
+    with open(candidateTablePath) as json_file: candidateTableDict = json.load(json_file)[sourceTableName]
+    tableDfs = {}
     numAdditional = 0
     for table in datasets:
         tableName = table.split("/")[-1]

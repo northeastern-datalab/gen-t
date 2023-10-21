@@ -564,7 +564,7 @@ def FDAlgorithm(candidate_tables, source_table, cluster, timeout):
     numValues = fd_table.shape[0]* fd_table.shape[1]
     return fd_table, numValues, stats_df, debug_dict
 
-def loadCandidateTables(benchmark, sourceTableName, performProjSel):
+def loadCandidateTables(benchmark, sourceTableName, candidateTableDict, performProjSel):
     FILEPATH = '/home/gfan/Datasets/%s/' % (benchmark)
     if '_groundtruth' in benchmark: FILEPATH = '/home/gfan/Datasets/%s/' % ('santos_large_tpch')
     print("FILEPATH: ", FILEPATH)
@@ -573,7 +573,6 @@ def loadCandidateTables(benchmark, sourceTableName, performProjSel):
     
     datasets = glob.glob(FILEPATH+"datalake/*.csv")    
     dataLakePath = FILEPATH+"datalake/"
-    candidateTableDict = utils.loadDictionaryFromPickleFile("../../results_candidate_tables/%s/%s_candidateTables.pkl" % (benchmark, sourceTableName))
     print("Imported %d raw candidates" % (len(candidateTableDict)))
     tableDfs = {}
     for table in datasets:
@@ -599,12 +598,10 @@ def loadCandidateTables(benchmark, sourceTableName, performProjSel):
         foreignKeys = [colName for colName in sourceTable.columns.tolist() if 'key' in colName and colName != primaryKey]        
         projectedTableDfs = projectAtts(tableDfs, sourceTable)
         finalTableDfs = selectKeys(projectedTableDfs, sourceTable, primaryKey, foreignKeys)
-    for table, df in finalTableDfs.items():
-        print(table, df.shape)
     return finalTableDfs, sourceTable, primaryKey
 
-def main(benchmark, sourceTableName, performProjSel, timeout):
-    candidate_tables, sourceTable, primaryKey = loadCandidateTables(benchmark, sourceTableName, performProjSel)
+def main(benchmark, sourceTableName, candidateTablesDict, performProjSel, timeout):
+    candidate_tables, sourceTable, primaryKey = loadCandidateTables(benchmark, sourceTableName, candidateTablesDict, performProjSel)
     print("%d Candidate Tables: " % (len(list(candidate_tables.keys()))), list(candidate_tables.keys()))
     noCandidates = False
     timed_out = False
@@ -613,10 +610,9 @@ def main(benchmark, sourceTableName, performProjSel, timeout):
     if not candidate_tables: 
         noCandidates = True
         return timed_out, noCandidates, numOutputVals
-    outputDir = "output_tables/"
+    output_path = "output_tables/%s/"%(benchmark)
     if performProjSel:
-        outputDir = 'output_tables_projSel/'
-    output_path = outputDir+ benchmark
+        output_path = "output_tables_projSel/%s/"%(benchmark)
 # =============================================================================
     if not os.path.exists(output_path):
       # Create a new directory because it does not exist 

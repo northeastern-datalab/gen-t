@@ -4,10 +4,11 @@ import numpy as np
 import glob
 import os
 import time
+import math
 import utils
 from utils import projectAtts, selectKeys
 sys.path.append('../')
-from evaluatePaths import setTDR
+from evaluatePaths import bestMatchingTuples, valueSimilarity
 
 replaceNull = '*NAN*'
 def FindCurrentNullPattern(tuple1):
@@ -396,9 +397,18 @@ def checkAccuracy(old_df, new_df, sourceTable):
     oldDf = old_df[commonCols]
     newDf = new_df[commonCols]
     unary_operator_applied = True
-    originalTDR_r, originalTDR_p = setTDR(sourceTable, oldDf)
-    changeTDR_r, changeTDR_p = setTDR(sourceTable, newDf)
-    if changeTDR_r < originalTDR_r or changeTDR_p < originalTDR_p:
+    
+    
+    # check if applying complementation / subsumption increases Value Similarity Score 
+    original_bestMatchingDf = bestMatchingTuples(sourceTable, oldDf, commonCols[0])
+    if original_bestMatchingDf is None: return old_df, False
+    original_valueSim = valueSimilarity(sourceTable, original_bestMatchingDf, commonCols[0])
+    
+    change_bestMatchingDf = bestMatchingTuples(sourceTable, newDf, commonCols[0])
+    if change_bestMatchingDf is None: return old_df, False
+    change_valueSim = valueSimilarity(sourceTable, change_bestMatchingDf, commonCols[0])
+    
+    if change_valueSim < original_valueSim:
         return old_df, False
     return new_df, unary_operator_applied
 
@@ -417,6 +427,8 @@ def FDAlgorithm(candidate_tableDfs, source_table, cluster, timeout):
         table1, null_count, current_null_set = ReplaceNulls(table1, null_count)
         null_set = null_set.union(current_null_set)
     tableOpsApplied = str(table1Name)
+    
+    
     # == BEGIN Outer union
     for tableName, files in candidate_tableDfs.items():
         if tableName == table1Name: continue
@@ -598,9 +610,8 @@ def labelNulls(candidate_tables, source_table, keyCols):
     source_table = source_table.replace(np.nan, replaceNull)
     return candidate_tables, source_table
     
-def loadCandidateTables(benchmark, sourceTableName):
-    # originalBenchmark ='tpch' when benchmark ='tpch_mtTables'
-    originalBenchmark = '_'.join(benchmark.split("_")[:-1])
+def loadCandidateTables(benchmark, sourceTableName, originatingTablesDict):
+    originalBenchmark = benchmark
     if '_groundtruth' in benchmark: 
         originalBenchmark = 'tpch'
         if '_mtTables_groundtruth' in benchmark: originalBenchmark = benchmark
@@ -608,20 +619,18 @@ def loadCandidateTables(benchmark, sourceTableName):
     FILEPATH = '/home/gfan/Datasets/%s/' % (originalBenchmark)
     if '_mtTables_groundtruth' in benchmark: FILEPATH = '/home/gfan/Datasets/%s/' % (benchmark.split('_mtTables_groundtruth')[0])
     print("FILEPATH", FILEPATH)
+    
     sourceTable = pd.read_csv(FILEPATH+"queries/"+sourceTableName)
     datasets = glob.glob(FILEPATH+"datalake/*.csv")    
     dataLakePath = FILEPATH+"datalake/"
-    ssCandidateTableDict = utils.loadDictionaryFromPickleFile("../../results_candidate_tables/%s/%s_candidateTables.pkl" % (originalBenchmark, sourceTableName))
-    candidateTableDict = utils.loadDictionaryFromPickleFile("../../results_candidate_tables/%s/%s_candidateTables.pkl" % (benchmark, sourceTableName))
     tableDfs = {}
-    
+    print(originatingTablesDict)
     # for table in datasets:
-    for tableName in candidateTableDict:
+    for tableName in originatingTablesDict:
         table = dataLakePath+tableName
         if tableName == sourceTableName: continue
         table_df = pd.read_csv(table)
-        if len(ssCandidateTableDict[tableName]) > 0: print("RENAME COLUMNS: ", tableName, ssCandidateTableDict[tableName])
-        table_df = table_df.rename(columns=ssCandidateTableDict[tableName])
+        table_df = table_df.rename(columns=originatingTablesDict[tableName])
         # check types
         for col in table_df.columns:
             if col in sourceTable:
@@ -655,22 +664,22 @@ def loadCandidateTables(benchmark, sourceTableName):
     finalTableDfs = selectKeys(projectedTableDfs, sourceTable, primaryKey, foreignKeys)
     for table, df in finalTableDfs.items():
         df.reset_index(drop=True, inplace=True)
-        print(table, df.shape)
+        
+    if len(tableDfs) != len(finalTableDfs): print("From %d Candidate Tables, integrating %d tables" % (len(tableDfs), len(finalTableDfs)))
+    
     return finalTableDfs, sourceTable, primaryKey, foreignKeys
 
-def main(benchmark, sourceTableName, timeout):
-    candidate_tables, sourceTable, primaryKey, foreignKeys = loadCandidateTables(benchmark, sourceTableName)
-    sourceCols = sourceTable.columns.tolist()
-    print("Source table Cols: ", sourceCols)
-    print("Primary Key: ", primaryKey, " Foreign Keys: ", foreignKeys)
-    print("%d Candidate Tables: " % (len(list(candidate_tables.keys()))), list(candidate_tables.keys()))
+def main(benchmark, sourceTableName, originatingTablesDict, timeout):
+    candidate_tables, sourceTable, primaryKey, foreignKeys = loadCandidateTables(benchmark, sourceTableName, originatingTablesDict)
+    sourceCols = sourceTable.columns.tolist()    
+    
     noCandidates = False
     timed_out = False
     numOutputVals = 0
     if not candidate_tables: 
         noCandidates = True
         return timed_out, noCandidates, numOutputVals
-    output_path = r"gen-t_output_tables/"+ benchmark
+    output_path = "genT_output_tables/%s/"%(benchmark)
     
 # =============================================================================
     if not os.path.exists(output_path):

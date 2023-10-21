@@ -120,4 +120,4 @@ def table_Dkl(queryTable, candidateTable, primaryKey, queryValPairs, currMinDkl,
     if log:
         print("colDKL: ", colDKL)
         print("\tTABLE has Divergence", finalTableDkl)
-    return finalTableDkl, breakEarly, colDK
+    return finalTableDkl, breakEarly, colDKL

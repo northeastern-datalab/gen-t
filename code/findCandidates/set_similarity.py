@@ -5,6 +5,7 @@ import time
 import numpy as np
 from functools import reduce
 import sys
+import json
 from pandas.api.types import is_numeric_dtype
 sys.path.append('../')
 import utils
@@ -100,7 +101,7 @@ def checkSubsumedTables(tableDfs, candidateTablesFound, tables_aligned_tuple_ind
         ASourceColNames = set(dfA.columns)
         for tableB, dfB in table_alignedDfs.items():
             if tableB in removeTables or tableA in removeTables: continue
-            if tableA == tableB: continue
+            if tableA == tableB or dfA.equals(dfB): continue
             BRows = [tuple(row) for row in dfB.values]
             BSourceColNames = set(dfB.columns)
             subsumed, subsumedRows, subsumer, subsumerRows = None, None, None, None
@@ -114,6 +115,7 @@ def checkSubsumedTables(tableDfs, candidateTablesFound, tables_aligned_tuple_ind
                 overlapRows = set(ARows).intersection(set(BRows))
                 onlyARows = [row for row in ARows if row not in overlapRows]
                 onlyBRows = [row for row in BRows if row not in overlapRows]
+                if not onlyARows and not onlyBRows: continue
                 if not onlyARows: 
                     removeTables.add(tableA)
                 if not onlyBRows:
@@ -134,6 +136,7 @@ def checkSubsumedTables(tableDfs, candidateTablesFound, tables_aligned_tuple_ind
                     elif overlapValsInRow == row2:
                         subsumedTuples.append(row2)
                         break
+            if set(subsumedTuples) == set(subsumedRows) and set(subsumedTuples) == set(subsumerRows): continue
             if set(subsumedTuples) == set(subsumedRows):
                 removeTables.add(subsumed)
             elif set(subsumedTuples) == set(subsumerRows):
@@ -143,13 +146,13 @@ def checkSubsumedTables(tableDfs, candidateTablesFound, tables_aligned_tuple_ind
         del candidateTablesFound[table]
     return candidateTablesFound
 
-def get_lake(benchmark, sourceTableName, rawLakeDfs, allLakeTableCols, includeStarmie):
+def get_lake(benchmark, sourceTableName, rawLakeDfs, allLakeTableCols, starmie_candidates):
     '''
     Get data lake tables found from Starmie
     Args: 
         benchmark(str): benchmark name for filepath
         sourceTableName (str): name of source table
-        includeStarmie (Boolean): get candidate tables from Starmie results or not
+        starmie_candidates (list): candidate tables from Starmie
     Return: 
         lakeDfs(dict of dicts): filename: {col: list of values as strings}
         rawLakeDfs (dict): filename: raw DataFrame
@@ -158,21 +161,15 @@ def get_lake(benchmark, sourceTableName, rawLakeDfs, allLakeTableCols, includeSt
     lakeTables = list(rawLakeDfs.keys())
     retrievedTables = lakeTables
     # ==== Import the tables returned from Starmie and use that as reduced data lake
-    if includeStarmie:
-        starmieTables = []
-        starmieCandidateTables = utils.loadListFromTxtFile("../Starmie_candidate_results/%s/Starmie_returned_tables_%s.txt" % (benchmark, sourceTableName))
-        for table in starmieCandidateTables:
-            starmieTables += glob.glob(DATALAKE_PATH+'datalake/'+table) 
-        retrievedTables = starmieTables
+    if starmie_candidates: retrievedTables = starmie_candidates
     lakeDfs = {}
     for filename in retrievedTables:
         table = filename.split("/")[-1]
         lakeDfs[table] = allLakeTableCols[table]
-        
     return lakeDfs
 
 
-def main(benchmark, sourceTableName, sim_threshold, rawLakeDfs, allLakeTableCols, includeStarmie=0, keyCol=None):
+def main(benchmark, sourceTableName, sim_threshold, rawLakeDfs, allLakeTableCols, starmie_candidates):
     '''
     Get Tables whose columns have high set overlap with Source Table's columns
     Args:
@@ -180,7 +177,6 @@ def main(benchmark, sourceTableName, sim_threshold, rawLakeDfs, allLakeTableCols
         sourceTableName: name of the Source Table
         sim_threshold (tau): similarity threshold 
         includeStarmie: discover candidate tables from tables returned using Starmie
-        keyCol: specified primary key (default is first column in Source)
     Save candidate tables (and their aligned columns to Source Table's columns to rename to) to a pkl file
     '''
     preprocessing_start_time = time.time()
@@ -189,7 +185,7 @@ def main(benchmark, sourceTableName, sim_threshold, rawLakeDfs, allLakeTableCols
     source_df = pd.read_csv(source_PATH, lineterminator="\n")
     print("Source table %s has %d rows and %d columns: " % (sourceTableName, source_df.shape[0], source_df.shape[1]))
     
-    lakeDfs = get_lake(benchmark, sourceTableName, rawLakeDfs, allLakeTableCols, includeStarmie)
+    lakeDfs = get_lake(benchmark, sourceTableName, rawLakeDfs, allLakeTableCols, starmie_candidates)
     print("Loaded in %d data lake tables in %.2f seconds" % (len(lakeDfs), time.time() - preprocessing_start_time))
    
     source_times = []
@@ -197,7 +193,6 @@ def main(benchmark, sourceTableName, sim_threshold, rawLakeDfs, allLakeTableCols
     tableDiverseSimScores, tableSetSimScores = {}, {}
     sourceCols = list(source_df.columns)
     primaryKey = source_df.columns.tolist()[0]
-    if keyCol is not None: primaryKey = keyCol
     
     noCandidates = 0 # flag: no candidates found for this Source Table
     for sCol in sourceCols:
@@ -325,12 +320,5 @@ def main(benchmark, sourceTableName, sim_threshold, rawLakeDfs, allLakeTableCols
         candidateTablesFound = checkSubsumedTables(rawLakeDfs, candidateTablesFound, tables_aligned_tuple_indxes, source_df)
         print("%d total tables returned" % (len(candidateTablesFound)))      
         print("Average source TIME: %.2f seconds " % (sum(source_times)/len(source_times)))
-        # Save returned tables
-        print("SAVING %d candidate tables" % (len(candidateTablesFound)))
-        
-        try: os.remove("../results_candidate_tables/%s/%s_candidateTables.pkl" % (benchmark, sourceTableName))
-        except FileNotFoundError:
-            pass
-        utils.saveDictionaryAsPickleFile(candidateTablesFound, "../results_candidate_tables/%s/%s_candidateTables.pkl" % (benchmark, sourceTableName))
-    return noCandidates
+    return candidateTablesFound, noCandidates
     

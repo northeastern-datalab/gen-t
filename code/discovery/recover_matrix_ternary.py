@@ -9,6 +9,7 @@ sys.path.append('../')
 import utils
 from utils import projectAtts, selectKeys
 
+
 def initializeTableMatrices(sourceTable, tableDfs, primaryKey, foreignKeys):
     ''' Create matrixes for each data lake table, 1 = value matches source table, 0 = doesn't match, -1 = value is non-null and doesn't match
     Input:
@@ -110,7 +111,9 @@ def traverseGraph(tableMatrices, startTable, sourceTable):
     '''
     startTable, startMatrix = startTable, tableMatrices[startTable]
     traversedTables, nextTable = [startTable], None
-    prevCorrect = mostCorrect = findPercentageCorrect(startMatrix)
+    # Using Normalized VSS as evaluateSimilarity()
+    prevCorrect = mostCorrect = findPercentageCorrect_norm(startMatrix)
+    
     testCount = 0
     exitEarly = 0
     while len(traversedTables) < len(tableMatrices) and mostCorrect < 1.0 and not exitEarly:
@@ -124,7 +127,10 @@ def traverseGraph(tableMatrices, startTable, sourceTable):
                     for tTable in traversedTables:
                         intermediateMatrix = combineTernaryMatrices(intermediateMatrix, tableMatrices[tTable])                
                 combinedMatrix = combineTernaryMatrices(intermediateMatrix, matrix)
-                percentCorrectVals = findPercentageCorrect(combinedMatrix)    
+                # Using Normalized VSS metric as evaluateSimilarity()
+                percentCorrectVals = findPercentageCorrect_norm(combinedMatrix)
+    
+                
                 if percentCorrectVals > mostCorrect:
                     mostCorrect = percentCorrectVals
                     nextTable = table
@@ -137,10 +143,9 @@ def traverseGraph(tableMatrices, startTable, sourceTable):
     return traversedTables, mostCorrect
 
 
-
-def findPercentageCorrect(matrixDict):
+def findPercentageCorrect_norm(matrixDict):
     '''
-    find the percentage of 1's or correct values in the current matrix
+    evaluate Similarity: find the percentage of 1's or correct values in the current matrix
     '''
     checkTuples = []
     for key, tuples in matrixDict.items():
@@ -160,8 +165,8 @@ def findPercentageCorrect(matrixDict):
     percentErrVals = len([val for val in checkMatrix if val<0]) / len(checkMatrix)
     
     if percentCorrectVals == 0.0 or percentErrVals > percentCorrectVals: return None
-    return (percentCorrectVals - percentErrVals)
-    
+    return 0.5*(1 + percentCorrectVals - percentErrVals)
+
 def getDLMatrices(sourceTable, tableDfs, primaryKey,foreignKeys, startNode=None):
     '''
     initialize candidate tables as matrices to align their values with the Source Table,
@@ -178,7 +183,9 @@ def getDLMatrices(sourceTable, tableDfs, primaryKey,foreignKeys, startNode=None)
     tableCorrectVals = {}
     removeTables = []
     for table, matrix in tableMatrices.items():
-        percentCorrectVals = findPercentageCorrect(matrix)
+        # Using Normalized VSS metric as evaluateSimilarity()
+        percentCorrectVals = findPercentageCorrect_norm(matrix)
+        
         if not percentCorrectVals: 
             print("REMOVING", table, percentCorrectVals)
             removeTables.append(table)
@@ -192,7 +199,7 @@ def getDLMatrices(sourceTable, tableDfs, primaryKey,foreignKeys, startNode=None)
         print("Removing Table ", table)
         tableDfs.pop(table)
         tableMatrices.pop(table)
-    if mostCorrect == 0.0: return None, None, None, None, None
+    if mostCorrect == 0.0: return None, None, None, None, None, None
     
     tableMatrices = {k: v for k, v in sorted(tableMatrices.items(),key = lambda item : tableCorrectVals[item[0]], reverse=True)}
     print("Start Table: ", startTable, mostCorrect)
@@ -202,23 +209,13 @@ def getDLMatrices(sourceTable, tableDfs, primaryKey,foreignKeys, startNode=None)
     matTraverseTime = time.time() - startTime
     print("=========== MATRIX TRAVERSAL took %.2f seconds =================================" % (matTraverseTime))
     return tableDfs, tableMatrices, traversedTables, correctVals, matrixInitTime, matTraverseTime
-
-    
-def saveTravTables(benchmark, sourceTableName, traversedTables):
-    # Save traversed tables so they can be used for integration
-    print("SAVING %d Traversed tables for %s" % (len(traversedTables), sourceTableName))
-    traversedForSource = {}
-    for table in traversedTables:
-        traversedForSource[table] = {}
-    print("saving to ../results_candidate_tables/%s/%s_candidateTables.pkl" % (benchmark+'_mtTables_3', sourceTableName))
-    utils.saveDictionaryAsPickleFile(traversedForSource, "../results_candidate_tables/%s/%s_candidateTables.pkl" % (benchmark+'_mtTables_3', sourceTableName))
- 
  
 
 def getPreprocessedTables(benchmark, datasets, sourceTableName, sourceTable):
     # Get preprocessed tables
     tableDfs = getTableDfs(benchmark, datasets, sourceTableName)
     if tableDfs is None: return tableDfs
+    
     for table, df in tableDfs.items():
         # check types
         for col in df.columns:
@@ -227,12 +224,12 @@ def getPreprocessedTables(benchmark, datasets, sourceTableName, sourceTable):
                 except: 
                     df = df.dropna()
                     try: df[col] = df[col].astype(sourceTable[col].dtypes.name)
-                    except: df = df.drop(col, axis=1) # if cannot convert to same type, delete    
+                    except: df = df.drop(col, axis=1) # if cannot convert to same type, delete   
     print("There are %d preprocessed tables" % (len(tableDfs)))
     return tableDfs
 
 
-def main(benchmark, sourceTableName='source', saveTraversedTables=0):
+def main(benchmark, sourceTableName='source'):
     FILEPATH = '/home/gfan/Datasets/%s/' % (benchmark) 
     timesStats = {}
     startTime = time.time()
@@ -259,7 +256,7 @@ def main(benchmark, sourceTableName='source', saveTraversedTables=0):
 
     print("Source Table Columns: ", sourceTable.columns.tolist())
     tableDfs = getPreprocessedTables(benchmark, datasets, sourceTableName, sourceTable)
-    if not tableDfs: return None, None, None, None, None, None
+    if not tableDfs: return None, None
     
     projectedTableDfs = projectAtts(tableDfs, sourceTable)
     finalTableDfs = selectKeys(projectedTableDfs, sourceTable, primaryKey, foreignKeys)
@@ -268,17 +265,15 @@ def main(benchmark, sourceTableName='source', saveTraversedTables=0):
     print("There are %d tables after foreign key join" % (len(finalTableDfs)))
     for table, df in finalTableDfs.items():
         print(table, df.shape, df.columns.tolist())
-    if not finalTableDfs: return None, None, None, None, None, None
+    if not finalTableDfs: return None, None
     print("Source table %s has %d rows and %d columns, columns: " % (sourceTableName, sourceTable.shape[0], sourceTable.shape[1]), sourceTable.columns.tolist())
     print("Keys: ", primaryKey, foreignKeys)
     
     finalTableDfs, tableMatrices, traversedTables, correctVals, matrixInitTime, matTraverseTime = getDLMatrices(sourceTable, finalTableDfs, primaryKey, foreignKeys)
-    print("There are %d tables after Matrix Traversal" % (len(finalTableDfs)))
-    if saveTraversedTables and traversedTables: saveTravTables(benchmark, sourceTableName, traversedTables)
     timesStats['matrix_initialization'] = [matrixInitTime]
     timesStats['matrix_traversal'] = [matTraverseTime]
-    if tableMatrices == None and traversedTables == None and correctVals == None: return None, None, None, None, None, None
+    if tableMatrices == None and traversedTables == None and correctVals == None: timesStats = None
     
-    TDR_recall, TDR_precision, instanceSim, tableDkl, numTotalVals = None, None, None, None, None
-    return TDR_recall, TDR_precision, instanceSim, tableDkl, numTotalVals, timesStats
+    # return list of traversed tables for Source as originating tables
+    return traversedTables, timesStats
     

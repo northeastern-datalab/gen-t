@@ -12,6 +12,6 @@ In folder (integration/), alite_fd_original.py is the code used to run ALITE and
 
 ## Reproducibility:
 1. To get the set of candidate tables with high set similarity and the set of originating tables found in Gen-T, run discovery/runFindPath.py. This saves both sets of tables in a folder called "results_candidate_tables".
-2. To run table integration for Gen-T, run integration/runIntegration.py and ensure that the benchmark name ends in "mtTables".
-3. To run ALITE, also run integration/runIntegration.py and keep the benchmark name as is. Ensure that the flag "performProjSel" is set to 0.
-4. To run ALITE-PS, also run integration/runIntegration.py and keep the benchmark name as is. Ensure that the flag "performProjSel" is set to 1.
+2. To run table integration for Gen-T, run integration/runIntegration.py and set --genT to 1.
+3. To run ALITE, also run integration/runIntegration.py. Ensure that --doPS is set to 0.
+4. To run ALITE-PS, also run integration/runIntegration.py. Ensure that --doPS is set to 1.
