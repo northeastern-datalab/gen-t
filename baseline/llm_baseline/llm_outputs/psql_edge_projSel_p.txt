@@ -1,0 +1,130 @@
+I have integrated the tables from the data lake using Select-Project-Join-Union queries to reproduce all rows in the example table. Here is the resulting tabular data:
+
+```plaintext
+| partkey | p_name                               | mfgr           | retailprice | p_comment               |
+|---------|--------------------------------------|----------------|-------------|-------------------------|
+| 1015    | cornflower brown rosy seashell mint  | Manufacturer#4 | 916.01      | ial deposits. acc       |
+| 4209    | aquamarine cream burnished steel...  | Manufacturer#5 | 1113.2      | ross t                 |
+| 5264    | floral blush thistle rose forest     | Manufacturer#4 | 1169.26     | gifts are carefully a  |
+| 7461    | burnished midnight ghost coral green | Manufacturer#1 | 1368.46     | regular account        |
+| 7623    | spring puff dodger olive beige       | Manufacturer#2 | 1530.62     | hely regu              |
+| 10210   | navy royal burlywood khaki purple    | Manufacturer#3 | 1120.21     | uriously ev            |
+| 10931   | green tan aquamarine blush mint      | Manufacturer#2 | 1841.93     | unts. regular, final   |
+| 11999   | tan purple cornflower light mint     | Manufacturer#1 | 1910.99     | ffily fina             |
+| 12202   | salmon aquamarine navy firebrick v...| Manufacturer#3 | 1114.2      | re flu                 |
+| 13259   | chiffon cream misty rose peru        | Manufacturer#3 | 1172.25     | ronic, final c         |
+| 15826   | firebrick wheat forest orange chiffon| Manufacturer#4 | 1741.82     | fily regular d         |
+| 16207   | sandy grey ghost lavender frosted... | Manufacturer#4 | 1123.2      | ests dazzle-- requ     |
+| 16803   | cyan forest burnished saddle cornf...| Manufacturer#2 | 1719.8      | the furiously speci    |
+| 21533   | maroon rosy chiffon puff royal       | Manufacturer#5 | 1454.53     | furiously regular plat |
+| 22527   | sienna drab salmon gainsboro azure   | Manufacturer#1 | 1449.52     | slyly unus             |
+| 26119   | antique white peru cream maroon       | Manufacturer#3 | 1045.11     | st among the q         |
+| 32889   | gainsboro seashell violet olive snow | Manufacturer#2 | 1821.88     | nding id               |
+| 32931   | rosy deep peru burnished lemon       | Manufacturer#5 | 1863.93     | r the furiously regul  |
+| 33143   | maroon plum floral tomato forest     | Manufacturer#1 | 1076.14     | unts affix bravely a  |
+| 33322   | snow dim light gainsboro red         | Manufacturer#3 | 1255.32     | blithel                |
+| 38526   | cornsilk lime papaya drab bisque     | Manufacturer#4 | 1464.52     | s. bli                |
+| 41189   | medium forest blue misty steel       | Manufacturer#3 | 1130.18     | ronic                  |
+| 41749   | green steel aquamarine linen sky     | Manufacturer#1 | 1690.74     | he final, iron         |
+| 44760   | floral navy black ghost steel        | Manufacturer#5 | 1704.76     | ests nag furiously qu  |
+| 52299   | black papaya peach powder blue       | Manufacturer#5 | 1251.29     | decoys                |
+| 55128   | lace orchid blanched grey sandy       | Manufacturer#5 | 1083.12     | unts w                |
+| 56764   | violet frosted dim rose chartreuse   | Manufacturer#1 | 1720.76     | sly even accounts      |
+| 57915   | chiffon lemon honeydew blue cream    | Manufacturer#5 | 1872.91     | fluff                 |
+| 60776   | firebrick chocolate maroon honeyde...| Manufacturer#5 | 1736.77     | al, even deposits a    |
+| 61244   | salmon tomato navajo ivory brown     | Manufacturer#4 | 1205.24     | promise special        |
+| 62323   | linen honeydew cornflower seashell...| Manufacturer#5 | 1285.32     | ide o                 |
+| 67788   | aquamarine navy orange floral fore...| Manufacturer#2 | 1503.43     | jole. carefully reg    |
+| 71086   | green cyan cream ivory medium        | Manufacturer#3 | 1878.03     | e regular deposits h   |
+| 74878   | floral green navy tomato light       | Manufacturer#5 | 1267.3      | refi                  |
+| 74979   | navy sandy floral green gainsboro    | Manufacturer#2 | 1343.29     | ts use furiously spec  |
+| 75227   | maroon orange azure floral bisque    | Manufacturer#1 | 1172.32     | hts! regular deposi    |
+| 78103   | papaya lavender gainsboro chocolate  | Manufacturer#2 | 1389.38     | ifully express ideas   |
+| 79071   | orange navy light royal floral       | Manufacturer#4 | 1732.74     | he blithely ironic p   |
+| 80911   | bisque dark sandy cyan peru           | Manufacturer#3 | 1496.24     | nd its use above the    |
+| 82226   | navy dodger medium aquamarine floral  | Manufacturer#3 | 1623.46     | unate epitaphs. brav   |
+| 83500   | dark plum orange thistle ivory       | Manufacturer#2 | 1522.15     | r the furiously regu   |
+| 85438   | dodger light misty chocolate steel   | Manufacturer#2 | 1248.26     | neyed requests. use    |
+| 87471   | floral lavender steel dark papaya    | Manufacturer#5 | 1667.64     | yly final account      |
+| 87976   | tomato orange salmon mint bisque     | Manufacturer#4 | 1674.63     | ole regular deposit    |
+| 89400   | lavender floral green gainsboro me...| Manufacturer#5 | 1299.29     | regularly express id  |
+| 89442   | dark peru firebrick cyan misty f...  | Manufacturer#3 | 1673.74     | rds. blithely even d   |
+| 89552   | bisque navy floral azure seashell...| Manufacturer#4 | 1033.08     | t the platelets. bl    |
+| 90361   | misty medium floral firebrick bur...| Manufacturer#4 | 1531.68     | hts use special, fur   |
+| 90712   | dodger dark cyan bisque floral       | Manufacturer#2 | 1409.3      | ed overdrafts. carefu  |
+| 93194   | navy burlywood floral pink bisque    | Manufacturer#4 | 1525.29     | ered account            |
+| 93301   | orange burlywood floral gainsboro... | Manufacturer#2 | 1166.22     | blithely silent the r  |
+| 95800   | floral misty thistle azure blanched  | Manufacturer#3 | 1182.23     | ults along the furr    |
+| 97332   | floral sandy steel pink dark         | Manufacturer#4 | 1030.05     | regula                 |
+| 97583   | cyan firebrick floral sandy blanch...| Manufacturer#1 | 1274.3      | ts nag ironic req      |
+| 98552   | floral gainsboro thistle burlywood...| Manufacturer#4 | 1442.56     | refully blithely bold  |
+| 98850   | dark cyan mint light navy bisque     | Manufacturer#2 | 1605.95     | equests h              |
+| 99230   | floral navy sandy mint lavender       | Manufacturer#2 | 1037.14     | y final ideas. regula  |
+| 100410  | steel floral lavender tomato misty...| Manufacturer#2 | 1291.31     | ets across the furri   |
+| 100728  | steel navy bisque floral deep        | Manufacturer#4 | 1233.28     | e. furiously specia    |
+| 101032  | floral pink sandy orange dark        | Manufacturer#1 | 1108.07     | he even pendin         |
+| 101345  | dark coral cyan tomato floral        | Manufacturer#1 | 1070.13     | ts use carefully spe   |
+| 101376  | dark floral coral dodger azure        | Manufacturer#1 | 1133.09     | e the even, blithely    |
+| 101618  | navy ivory floral bisque light       | Manufacturer#4 | 1152.25     | nd the deposits. fina  |
+| 101824  | floral bisque dark mint dark         | Manufacturer#5 | 1273.28     | re fully pending a     |
+| 102141  | coral tomato dark floral ivory       | Manufacturer#1 | 1083.06     | rial accounts. furio   |
+| 102145  | coral floral tomato dark dodger      | Manufacturer#3 | 1511.03     | hite even, blithely    |
+| 102399  | tomato dark mint coral navy          | Manufacturer#3 | 1508.32     | ift quickly about t    |
+| 102527  | dark coral floral dodger ivory       | Manufacturer#2 | 1082.06     | eeply final instruct   |
+| 102536  | coral floral dark mint bisque        | Manufacturer#5 | 1103.29     | ratefully blithely r   |
+| 102578  | coral floral tomato navy mint        | Manufacturer#4 | 1479.29     | gular deposits. sile   |
+| 102598  | coral mint navy floral ivory         | Manufacturer#1 | 1049.12     | nge blithely ironic f   |
+| 102601  | coral dodger floral navy dark        | Manufacturer#3 | 1324.29     | ey the ironic, finall   |
+| 102644  | coral floral navy ivory mint         | Manufacturer#5 | 1227.28     | gular, carefully dar   |
+| 102655  | coral dark floral dodger ivory       | Manufacturer#2 | 1269.28     | jole carefully pendi   |
+| 102675  | coral floral navy dark ivory         | Manufacturer#1 | 1162.29     | the slyly regular p    |
+| 102736  | coral dark floral dodger ivory       | Manufacturer#2 | 1039.07     | unts. final deposit    |
+| 102773  | coral floral navy dodger mint        | Manufacturer#5 | 1312.29     | rily regular request    |
+| 102775  | coral floral ivory navy dark         | Manufacturer#3 | 1078.06     | quirkily ironic acco   |
+| 102854  | coral floral dodger navy mint        | Manufacturer#2 | 1165.07     | ngerously final acc    |
+| 102902  | coral floral ivory navy mint         | Manufacturer#3 | 1280.28     | ards. carefully exch   |
+| 102945  | coral dark floral ivory dodger       | Manufacturer#4 | 1160.29     | nge blithely ironic    |
+| 102966  | coral floral navy mint ivory         | Manufacturer#2 | 1318.07     | late carefully abov   |
+| 102982  | coral floral mint navy ivory         | Manufacturer#4 | 1440.29     | ely furiously regula   |
+| 103065  | coral dark floral dodger navy        | Manufacturer#1 | 1207.06     | l along the pending     |
+| 103076  | coral floral navy mint ivory         | Manufacturer#5 | 1434.28     | ular requests. sile    |
+| 103160  | coral floral ivory navy mint         | Manufacturer#2 | 1302.07     | ts regular ideas. fu   |
+| 103175  | coral floral navy dark mint          | Manufacturer#1 | 1116.06     | eeply final, ironic    |
+| 103200  | coral floral navy ivory mint         | Manufacturer#4 | 1423.28     | ely special instruc   |
+| 103201  | coral floral mint navy dark          | Manufacturer#2 | 1332.07     | l deposits. carefully  |
+| 103241  | coral floral mint navy ivory         | Manufacturer#5 | 1351.28     | urious, blithely eve   |
+| 103280  | coral floral navy dark mint          | Manufacturer#4 | 1271.29     | fts. carefully spe     |
+| 103281  | coral floral navy mint dark          | Manufacturer#3 | 1157.06     | ngs against the iron   |
+| 103285  | coral floral mint navy ivory         | Manufacturer#2 | 1209.07     | the final requ         |
+| 103320  | coral floral navy ivory mint         | Manufacturer#5 | 1146.06     | ests are carefully p   |
+| 103324  | coral floral navy dark mint          | Manufacturer#1 | 1383.06     | ly express the packa   |
+| 103336  | coral floral mint navy ivory         | Manufacturer#5 | 1102.06     | e final packages! iro   |
+| 103359  | coral floral mint navy dark          | Manufacturer#3 | 1193.06     | rates. slyly even re   |
+| 103399  | coral floral navy mint ivory         | Manufacturer#1 | 1293.06     | en, blithely final,    |
+| 103403  | coral floral navy mint ivory         | Manufacturer#5 | 1220.06     | rds. furiously speci   |
+| 103419  | coral floral navy dark mint          | Manufacturer#3 | 1254.06     | gular, final deposi   |
+| 103422  | coral floral mint navy ivory         | Manufacturer#2 | 1212.07     | nts use across the f   |
+| 103432  | coral floral navy dark mint          | Manufacturer#1 | 1089.06     | lar deposits. sile     |
+| 103437  | coral floral mint navy ivory         | Manufacturer#4 | 1175.06     | blithely even deposi   |
+| 103438  | coral floral navy dark mint          | Manufacturer#3 | 1148.06     | fts. carefully spec    |
+| 103440  | coral floral mint navy ivory         | Manufacturer#5 | 1137.06     | cial requests. furio   |
+| 103441  | coral floral navy dark mint          | Manufacturer#4 | 1126.06     | l regular packages.    |
+| 103442  | coral floral mint navy ivory         | Manufacturer#2 | 1115.07     | kly express the slyl   |
+| 103447  | coral floral navy mint dark          | Manufacturer#5 | 1104.06     | eeply even, final ac   |
+| 103448  | coral floral mint navy ivory         | Manufacturer#1 | 1093.06     | blithely pending the   |
+| 103449  | coral floral navy dark mint          | Manufacturer#2 | 1082.07     | ts use the furiously   |
+| 103451  | coral floral mint navy ivory         | Manufacturer#3 | 1071.06     | egular accounts. furi |
+| 103454  | coral floral mint navy dark          | Manufacturer#4 | 1060.06     | ly even, final accou   |
+| 103455  | coral floral mint navy ivory         | Manufacturer#5 | 1049.06     | ts use furiously aro   |
+| 103457  | coral floral mint navy dark          | Manufacturer#2 | 1038.07     | r requests. carefully  |
+| 103461  | coral floral mint navy ivory         | Manufacturer#1 | 1027.06     | lthily even, blithel   |
+| 103462  | coral floral mint navy dark          | Manufacturer#3 | 1016.06     | lly express carefully  |
+| 103464  | coral floral mint navy ivory         | Manufacturer#4 | 1005.06     | he carefully ironi     |
+| 103465  | coral floral mint navy dark          | Manufacturer#5 | 995.06      | c accounts. pending    |
+| 103468  | coral floral mint navy ivory         | Manufacturer#2 | 984.07      | ly slyly final the i   |
+| 103469  | coral floral mint navy dark          | Manufacturer#1 | 973.06      | cial foxes. final de   |
+| 103471  | coral floral mint navy ivory         | Manufacturer#3 | 962.06      | he final deposits. f   |
+| 103472  | coral floral mint navy dark          | Manufacturer#4 | 951.06      | ly even, furiously b   |
+| 103473  | coral floral mint navy ivory         | Manufacturer#5 | 940.06      | lthily express caref   |
+| 103476  | coral floral mint navy dark          | Manufacturer#2 | 929.07      | yly express carefully  |
+| 103477  | coral floral mint navy ivory         | Manufacturer#1 | 918.06      | lar accounts. furio     |

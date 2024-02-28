@@ -1,0 +1,15 @@
+Here is the integrated table reproducing the example table:
+
+| orderkey | orderstatus | totalprice | clerk          | custkey | c_name           | c_address       | c_phone       | c_acctbal | mktsegment | linenumber | quantity | extendedprice | discount | returnflag | linestatus | shipdate  | commitdate | shipinstruct    |
+|----------|-------------|------------|----------------|---------|------------------|-----------------|---------------|------------|------------|------------|----------|---------------|----------|------------|------------|-----------|------------|-----------------|
+| 100993   | R           | 70726.1    | nan            | 20072   | Customer#000020072 | rJgwmlvd8N3 rea | 31-944-768-4169 | 3942.69    | BUILDING   | 4          | 49       | 70726.1       | 0.03     | R          | F          | 1993-10-09 | 1993-08-20 | COLLECT COD     |
+| 103011   | A           | 18858      | nan            | nan     | nan              | nan             | nan           | nan        | A          | nan        | nan      | nan           | nan      | A          | nan        | 1993-09-05 | nan        | nan             |
+| 1003264  | R           | 122427     | nan            | nan     | nan              | nan             | nan           | nan        | nan        | 4          | 543035   | 122427        | 0.04     | A          | F          | 1994-11-29 | 1994-11-09 | TAKE BACK RETURN|
+| 1008546  | N           | 10490.6    | nan            | 1003264 | nan              | nan             | nan           | nan        | nan        | 5          | nan      | 10490.6       | 0.05     | nan        | nan        | 1998-06-07 | nan        | nan             |
+| 1008934  | N           | 39623      | nan            | 1003264 | nan              | nan             | nan           | nan        | nan        | 1          | 27       | 39623         | 0.09     | N          | O          | 1995-10-02 | 1995-09-06 | DELIVER IN PERSON|
+| 1009888  | N           | 5513.37    | nan            | 1003264 | nan              | nan             | nan           | nan        | nan        | 3          | 868746   | 29862.1       | 0        | N          | O          | 1995-09-05 | 1995-08-23 | TAKE BACK RETURN|
+| 1011778  | A           | 20313.1    | nan            | 1003264 | nan              | nan             | nan           | nan        | nan        | 5          | 12       | 20313.1       | 0        | A          | F          | 1992-08-05 | 1992-09-27 | COLLECT COD     |
+| 1012867  | N           | 49619.3    | nan            | 1003264 | nan              | nan             | nan           | nan        | nan        | nan        | nan      | nan           | nan      | nan        | O          | 1998-03-30 | 1998-05-15 | nan             |
+| 1015491  | R           | 10387.7    | nan            | 1003264 | nan              | nan             | nan           | nan        | nan        | nan        | nan      | 10387.7       | 0.08     | nan        | F          | 1993-12-30 | 1994-02-09 | nan             |
+
+This integrated table combines data from various tables in the data lake to reproduce the rows in the example table provided.

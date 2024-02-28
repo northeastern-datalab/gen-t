@@ -1,0 +1,39 @@
+I have integrated the tables from the data lake using Select-Project-Join-Union queries to reproduce the example table. Here is the tabular result:
+
+```plaintext
+| suppkey | s_name               | s_address                                    | s_phone          |
+|---------|----------------------|----------------------------------------------|------------------|
+| 440     | Supplier#000000440   | s4UNoE4WDs9vXLZFJjsCVxZ0W8XU YCgqGBxVX     | 25-475-341-4841 |
+| 476     | Supplier#000000476   | ZvT qI2gMbh                                 | 10-219-531-3554 |
+| 491     | Supplier#000000491   | mTbDcJHQ7d                                 | 10-361-729-1693 |
+| 869     | Supplier#000000869   | izjrtictiq                                 | ennxyjvzdc      |
+| 915     | Supplier#000000915   | hzB2437Op7JLYX73d3,qU2                     | 28-191-772-5459 |
+| 1339    | Supplier#000001339   | 5c4jzbVZLzvxrok                            | 34-581-968-4641 |
+| 1500    | Supplier#000001500   | wDmF5xLxtQch9ctVu,                         | 13-685-210-1639 |
+| 1753    | Supplier#000001753   | Hl8Hn83R16EKFoedi31LQKu5 2exdrLzFeWb       | 33-108-335-5944 |
+| 2234    | Supplier#000002234   | Cb2T41MV4W4au vEhDGOuyNtVs4Y2O2            | 21-741-771-8869 |
+| 3255    | Supplier#000003255   | 4TB2q kbKyVY3                              | 32-693-382-9279 |
+| 3287    | Supplier#000003287   | zTGbtB bMCt5Rl D6fJ rVj0F2ogI              | 19-416-117-4411 |
+| 4068    | Supplier#000004068   | w2MniB04fvEPPAHTfEi1bS3e7eQboYSB2bq       | 22-290-743-7808 |
+| 4498    | Supplier#000004498   | LklMZK6XmdLT                               | 12-964-166-6801 |
+| 4582    | Supplier#000004582   | WB0XkCSG3r,mnQ n,h9VIxjjr9ARHFvKgMDf      | 32-587-577-1351 |
+| 4767    | Supplier#000004767   | mR0nDVqZvOIrb1i6DmxOLyTXWYyI M             | 12-834-224-9409 |
+| 4891    | Supplier#000004891   | c4DxOrexw3nogQgYrEwhwdDxk1NI6bOPAwgmo8I   | 22-547-938-9375 |
+| 5220    | Supplier#000005220   | YQIMhm7NYmeeAOVTOTO,                       | 26-701-146-2726 |
+| 5232    | Supplier#000005232   | xlSj2gbKDJQKLXbxsuA14uguomr5SMqhfNTL       | 18-746-919-8850 |
+| 5296    | Supplier#000005296   | sk,N6IfeiTByYqUGr7n                        | 19-887-791-5636 |
+| 5319    | Supplier#000005319   | 6BU3YEG2abhHe6VgoaXUl5B9BulZKxWSPqY       | 30-658-404-7761 |
+| 5572    | Supplier#000005572   | o0VYozeSbEyqck                             | 31-829-399-4904 |
+| 5924    | Supplier#000005924   | EsAX2Kl2ePben8iCc9airPaQAuA9HIr0c9A4T,K   | 28-596-222-5796 |
+| 5980    | Supplier#000005980   | TQnqbXl1GVlMAISOLXpAyFMz1k3k7quGLyRAX ty  | 30-292-356-7264 |
+| 6037    | Supplier#000006037   | BN2L1uvR ljk9w GxLmOqFmIz2eUwNKi          | 14-524-283-2974 |
+| 6219    | Supplier#000006219   | ohzge,Q3J                                  | 23-218-176-4877 |
+| 6351    | Supplier#000006351   | 68Uq6RKjXQHm                               | 17-276-501-3383 |
+| 6469    | Supplier#000006469   | YgHBEspedUzA5lK9XMtyWbAg                   | 18-647-980-9377 |
+| 6487    | Supplier#000006487   | jW   oH4ZTM2Vs2zlMjo,K j7ySqQAD4a,         | 15-517-731-5514 |
+| 6829    | Supplier#000006829   | O3GExJQDr3LXj                              | 20-217-474-1556 |
+| 6831    | Supplier#000006831   | vGwq UuEn                                | 11-619-177-2433 |
+| 6981    | Supplier#000006981   | z5igX2Vqtu                                | 13-282-767-9839 |
+```
+
+This table represents the selected columns from the suppliers and partsupp tables based on the provided conditions. If you have any specific questions or need further clarification, feel free to ask.

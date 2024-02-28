@@ -1,0 +1,21 @@
+Here is the integrated table:
+
+| partkey | availqty | supplycost | ps_comment | p_name | mfgr | brand | type | size | container | retailprice |
+|---------|----------|------------|------------|--------|------|-------|------|------|-----------|-------------|
+| 211 | 6045 | 856.97 | ironic multipliers sleep. furiously express requests wake quickly. regular dependencies along the dinos sleep after the epitaphs. quietly unusual deposits haggle blith | cornflower brown rosy seashell mint | Manufacturer#4 | Brand#41 | MEDIUM BRUSHED BRASS | 15 | MED CAN | 916.01 |
+| 363 | 968 | 413.65 | es. ironic foxes after the regular pinto beans wake even deposits. carefully pending platelets use after the quick, final excuses. quickly regular asym | nan | Manufacturer#4 | nan | MEDIUM BRUSHED BRASS | nan | nan | 916.01 |
+| 368 | 1356 | 388.64 | eans integrate blithely pending requests. furiously even theodolites print ironic sauternes. carefully bold ideas nod slyly unusual foxes. slyly special pin | floral blush thistle rose forest | Manufacturer#4 | Brand#42 | MEDIUM ANODIZED STEEL | 9 | nan | nan |
+| 479 | 7560 | 777.28 | ounts integrate furiously around the pinto beans. regular pinto beans lose carefully carefully ironic packages-- ironic packages haggle above the slyly regular accounts. regular package | nan | Manufacturer#5 | nan | PROMO POLISHED COPPER | nan | JUMBO JAR | 1113.2 |
+| 490 | 7994 | 17.68 | lyly brave ideas. accounts cajole. slyly express hockey pla | aquamarine cream burnished steel gainsboro | Manufacturer#5 | Brand#52 | PROMO POLISHED COPPER | 2 | nan | 1113.2 |
+| 604 | 2194 | 980.46 | eposits across the blithely even deposits use careful | nan | Manufacturer#5 | nan | nan | 2 | JUMBO JAR | 1113.2 |
+| 786 | nan | 361.62 | the final, bold pinto beans haggle blithely special, unusual accounts. slyly express t | nan | Manufacturer#5 | Brand#52 | PROMO POLISHED COPPER | 2 | nan | 1113.2 |
+| 950 | 7713 | nan | instructions nag furiously thin, even ideas. furiously ironic foxes use. furiously pending packages sleep slyly through | nan | nan | Brand#52 | PROMO POLISHED COPPER | nan | JUMBO JAR | 1113.2 |
+| 1321 | nan | 819.86 | ic foxes haggle blithely furiously final accounts. theodolites boost about the packages. carefully ironic pinto bea | floral blush thistle rose forest | Manufacturer#4 | Brand#42 | MEDIUM ANODIZED STEEL | 9 | nan | nan |
+| 1420 | 3366 | 253.65 | . slyly even ideas wake furiously above the fluffily thin pinto beans. bold packages cajole quickly. regular accounts cajole quickly ironi | floral blush thistle rose forest | Manufacturer#4 | Brand#42 | MEDIUM ANODIZED STEEL | 9 | nan | nan |
+| 2159 | 5955 | nan | nan | yuzksyfhpi | Manufacturer#4 | hrxtlpkzyd | sdnaozzhzm | 663736 | MED CAN | 442513 |
+| 2271 | 2013 | nan | try to wake above the furiously regular deposits. even deposits are blithely ab | cornflower brown rosy seashell mint | Manufacturer#4 | Brand#41 | MEDIUM BRUSHED BRASS | 15 | MED CAN | 916.01 |
+| 2711 | 5467 | 831.28 | nstructions. regular deposits cajole. ironic accounts believe final instructions. instructions past the slyly regular courts nag quickly spec | cornflower brown rosy seashell mint | Manufacturer#4 | Brand#41 | MEDIUM BRUSHED BRASS | 15 | MED CAN | 916.01 |
+| 2863 | 2810 | 233 | ronic foxes. express packages are carefully above the slyly ironic instructions. carefully regular deposits may grow according to the dogged deposits. slyly pending deposits cajole furiously. ironi | nan | Manufacturer#4 | Brand#41 | MEDIUM BRUSHED BRASS | 15 | MED CAN | 916.01 |
+| 2868 | 62 | nan | nan | zrhlwqisob | nan | nan | nan | nan | nan | nan |
+
+I hope this meets your expectations. If you have any further requests or adjustments, feel free to let me know!

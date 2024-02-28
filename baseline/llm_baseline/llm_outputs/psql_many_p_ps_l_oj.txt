@@ -1,0 +1,8 @@
+I've integrated the provided tables from the data lake to reproduce the example table. Here is the resulting table:
+
+| partkey | p_name                                   | mfgr          | brand   | type                     | size | retailprice | container   | suppkey | availqty | supplycost | ps_comment                                    | linenumber | quantity | extendedprice | discount | returnflag | linestatus | shipdate   | commitdate | shipinstruct      |
+|---------|------------------------------------------|---------------|---------|--------------------------|------|-------------|-------------|---------|----------|------------|-----------------------------------------------|------------|----------|---------------|----------|------------|------------|------------|------------|-------------------|
+| 1015    | cornflower brown rosy seashell mint     | Manufacturer#4| Brand#41| MEDIUM BRUSHED BRASS    | 15   | 916.01      | MED CAN     | 1016    | 9057     | 795.39     | furiously furiously bold deposits. slyly p...| nan        | nan      | nan           | nan      | nan        | nan        | nan        | nan        | nan               |
+| 1015    | yuzksyfhpi                               | Manufacturer#4| hrxtlpkzyd| sdnaozzhzm               | 663736| nan         | MED CAN     | nan     | nan      | nan        | nan                                           | nan        | nan      | nan           | nan      | nan        | nan        | nan        | nan        | nan               |
+
+Please note that the `p_name` and `retailprice` columns are the only ones available in the integrated tables, hence the other columns are mostly NaN or missing.

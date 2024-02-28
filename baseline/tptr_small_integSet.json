@@ -1,0 +1,255 @@
+{
+    "psql_0_c_oj_asia.csv": [
+        "customer_0_0.csv",
+        "customer_0_1.csv",
+        "customer_2_0.csv",
+        "customer_2_1.csv",
+        "nation_asia.csv"
+    ],
+    "psql_2_c_rj_asia.csv": [
+        "customer_0_0.csv",
+        "customer_0_1.csv",
+        "customer_2_0.csv",
+        "customer_2_1.csv",
+        "nation_asia.csv"
+    ],
+    "psql_4_c_union_oj_n.csv": [
+        "customer_0_0.csv",
+        "customer_0_1.csv",
+        "customer_2_0.csv",
+        "customer_2_1.csv",
+        "nation_asia.csv",
+        "nation_europe.csv"
+    ],
+    "psql_5_c_union_ij_n.csv": [
+        "customer_0_0.csv",
+        "customer_0_1.csv",
+        "customer_2_0.csv",
+        "customer_2_1.csv",
+        "nation_asia.csv",
+        "nation_europe.csv"
+    ],
+    "psql_6_c_ij_n.csv": [
+        "customer_0_0.csv",
+        "customer_0_1.csv",
+        "customer_2_0.csv",
+        "customer_2_1.csv",
+        "nation_africa.csv",
+        "nation_americas.csv",
+        "nation_asia.csv",
+        "nation_europe.csv"
+    ],
+    "psql_9_s_oj_ps.csv": [
+        "supplier_0_0.csv",
+        "supplier_0_1.csv",
+        "supplier_2_0.csv",
+        "supplier_2_1.csv",
+        "partsupp_0_0.csv",
+        "partsupp_0_1.csv",
+        "partsupp_2_0.csv",
+        "partsupp_2_1.csv"
+    ],
+    "psql_10_s_ij_ps.csv": [
+        "supplier_0_0.csv",
+        "supplier_0_1.csv",
+        "supplier_2_0.csv",
+        "supplier_2_1.csv",
+        "partsupp_0_0.csv",
+        "partsupp_0_1.csv",
+        "partsupp_2_0.csv",
+        "partsupp_2_1.csv"
+    ],
+    "psql_11_n_oj_s.csv": [
+        "nation_africa.csv",
+        "nation_americas.csv",
+        "nation_asia.csv",
+        "nation_europe.csv",
+        "supplier_0_0.csv",
+        "supplier_0_1.csv",
+        "supplier_2_0.csv",
+        "supplier_2_1.csv"
+    ],
+    "psql_12_n_ij_s.csv": [
+        "nation_africa.csv",
+        "nation_americas.csv",
+        "nation_asia.csv",
+        "nation_europe.csv",
+        "supplier_0_0.csv",
+        "supplier_0_1.csv",
+        "supplier_2_0.csv",
+        "supplier_2_1.csv"
+    ],
+    "psql_13_r_oj_n.csv": [
+        "region_0_0.csv",
+        "region_0_1.csv",
+        "region_2_0.csv",
+        "region_2_1.csv",
+        "nation_africa.csv",
+        "nation_americas.csv",
+        "nation_asia.csv",
+        "nation_europe.csv"
+    ],
+    "psql_14_r_ij_n.csv": [
+        "region_0_0.csv",
+        "region_0_1.csv",
+        "region_2_0.csv",
+        "region_2_1.csv",
+        "nation_africa.csv",
+        "nation_americas.csv",
+        "nation_asia.csv",
+        "nation_europe.csv"
+    ],
+    "psql_15_c_oj_o.csv": [
+        "customer_0_0.csv",
+        "customer_0_1.csv",
+        "customer_2_0.csv",
+        "customer_2_1.csv",
+        "orders_0_0.csv",
+        "orders_0_1.csv",
+        "orders_2_0.csv",
+        "orders_2_1.csv"
+    ],
+    "psql_16_c_ij_o.csv": [
+        "customer_0_0.csv",
+        "customer_0_1.csv",
+        "customer_2_0.csv",
+        "customer_2_1.csv",
+        "orders_0_0.csv",
+        "orders_0_1.csv",
+        "orders_2_0.csv",
+        "orders_2_1.csv"
+    ],
+    "psql_7_p_oj_ps.csv": [
+        "part_0_0.csv",
+        "part_0_1.csv",
+        "part_2_0.csv",
+        "part_2_1.csv",
+        "partsupp_0_0.csv",
+        "partsupp_0_1.csv",
+        "partsupp_2_0.csv",
+        "partsupp_2_1.csv"
+    ],
+    "psql_8_p_ij_ps.csv": [
+        "part_0_0.csv",
+        "part_0_1.csv",
+        "part_2_0.csv",
+        "part_2_1.csv",
+        "partsupp_0_0.csv",
+        "partsupp_0_1.csv",
+        "partsupp_2_0.csv",
+        "partsupp_2_1.csv"
+    ],
+    "psql_many_c_n_s_oj.csv": [
+        "customer_0_0.csv",
+        "customer_0_1.csv",
+        "customer_2_0.csv",
+        "customer_2_1.csv",
+        "nation_africa.csv",
+        "nation_americas.csv",
+        "nation_asia.csv",
+        "nation_europe.csv",
+        "supplier_0_0.csv",
+        "supplier_0_1.csv",
+        "supplier_2_0.csv",
+        "supplier_2_1.csv"
+    ],
+    "psql_many_c_n_s_r_oj.csv": [
+        "customer_0_0.csv",
+        "customer_0_1.csv",
+        "customer_2_0.csv",
+        "customer_2_1.csv",
+        "nation_africa.csv",
+        "nation_americas.csv",
+        "nation_asia.csv",
+        "nation_europe.csv",
+        "supplier_0_0.csv",
+        "supplier_0_1.csv",
+        "supplier_2_0.csv",
+        "supplier_2_1.csv",
+        "region_0_0.csv",
+        "region_0_1.csv",
+        "region_2_0.csv",
+        "region_2_1.csv"
+    ],
+    "psql_many_c_o_l_oj.csv": [
+        "customer_0_0.csv",
+        "customer_0_1.csv",
+        "customer_2_0.csv",
+        "customer_2_1.csv",
+        "orders_0_0.csv",
+        "orders_0_1.csv",
+        "orders_2_0.csv",
+        "orders_2_1.csv",
+        "lineitem_0_0.csv",
+        "lineitem_0_1.csv",
+        "lineitem_2_0.csv",
+        "lineitem_2_1.csv"
+    ],
+    "psql_many_c_o_l_n_oj.csv": [
+        "customer_0_0.csv",
+        "customer_0_1.csv",
+        "customer_2_0.csv",
+        "customer_2_1.csv",
+        "orders_0_0.csv",
+        "orders_0_1.csv",
+        "orders_2_0.csv",
+        "orders_2_1.csv",
+        "lineitem_0_0.csv",
+        "lineitem_0_1.csv",
+        "lineitem_2_0.csv",
+        "lineitem_2_1.csv",
+        "nation_africa.csv",
+        "nation_americas.csv",
+        "nation_asia.csv",
+        "nation_europe.csv"
+    ],
+    "psql_many_p_ps_l_oj.csv": [
+        "part_0_0.csv",
+        "part_0_1.csv",
+        "part_2_0.csv",
+        "part_2_1.csv",
+        "partsupp_0_0.csv",
+        "partsupp_0_1.csv",
+        "partsupp_2_0.csv",
+        "partsupp_2_1.csv",
+        "lineitem_0_0.csv",
+        "lineitem_0_1.csv",
+        "lineitem_2_0.csv",
+        "lineitem_2_1.csv"
+    ],
+    "psql_edge_projSel_p.csv": [
+        "part_0_0.csv",
+        "part_0_1.csv",
+        "part_2_0.csv",
+        "part_2_1.csv"
+    ],
+    "psql_edge_projSel_s.csv": [
+        "supplier_0_0.csv",
+        "supplier_0_1.csv",
+        "supplier_2_0.csv",
+        "supplier_2_1.csv"
+    ],
+    "psql_edge_projSel_c.csv": [
+        "customer_0_0.csv",
+        "customer_0_1.csv",
+        "customer_2_0.csv",
+        "customer_2_1.csv"
+    ],
+    "psql_edge_projSel_n.csv": [
+        "nation_africa.csv",
+        "nation_americas.csv",
+        "nation_asia.csv"
+    ],
+    "psql_edge_projSel_o.csv": [
+        "orders_0_0.csv",
+        "orders_0_1.csv",
+        "orders_2_0.csv",
+        "orders_2_1.csv"
+    ],
+    "psql_edge_projSel_ps.csv": [
+        "partsupp_0_0.csv",
+        "partsupp_0_1.csv",
+        "partsupp_2_0.csv",
+        "partsupp_2_1.csv"
+    ]
+}

@@ -1,0 +1,233 @@
+{
+    "psql_12_n_ij_s.csv": {
+        "suppkey,s_name": "[\"view38\", \"view116\"]",
+        "suppkey,s_address": "[\"view38\", \"view116\"]",
+        "suppkey,s_phone": "[\"view38\", \"view116\"]",
+        "suppkey,s_acctbal": "[\"view38\", \"view116\"]",
+        "suppkey,nationkey": "[\"view38\", \"view116\"]",
+        "suppkey,n_name": "[]",
+        "suppkey,n_comment": "[\"view120\"]"
+    },
+    "psql_16_c_ij_o.csv": {
+        "orderkey,orderstatus": "[\"view118\", \"view26\", \"view229\"]",
+        "orderkey,totalprice": "[\"view7\", \"view224\", \"view141\"]",
+        "orderkey,clerk": "[\"view7\"]",
+        "orderkey,custkey": "[\"view7\", \"view224\", \"view141\"]",
+        "orderkey,c_name": "[\"view118\", \"view26\", \"view229\"]",
+        "orderkey,c_address": "[\"view7\", \"view118\"]",
+        "orderkey,c_phone": "[\"view118\", \"view26\", \"view229\"]",
+        "orderkey,c_acctbal": "[\"view118\", \"view26\", \"view229\"]",
+        "orderkey,mktsegment": "[\"view7\", \"view118\"]"
+    },
+    "psql_many_c_n_s_oj.csv": {
+        "custkey,c_name": "[\"view175\", \"view118\", \"view498\"]",
+        "custkey,c_address": "[\"view118\", \"view175\"]",
+        "custkey,c_phone": "[\"view175\", \"view118\", \"view498\"]",
+        "custkey,mktsegment": "[\"view118\"]",
+        "custkey,suppkey": "[\"view175\", \"view118\", \"view498\"]",
+        "custkey,s_name": "[\"view175\", \"view118\", \"view498\"]",
+        "custkey,s_address": "[\"view118\", \"view175\"]",
+        "custkey,s_phone": "[\"view175\", \"view118\", \"view498\"]",
+        "custkey,s_comment": "[\"view118\", \"view175\"]",
+        "custkey,nationkey": "[\"view175\", \"view118\", \"view498\"]",
+        "custkey,n_name": "[]",
+        "custkey,n_comment": "[\"view118\"]"
+    },
+    "psql_0_c_oj_asia.csv": {
+        "custkey,c_name": "[\"view32\", \"view7\", \"view90\"]",
+        "custkey,c_address": "[\"view7\", \"view26\"]",
+        "custkey,nationkey": "[\"view32\", \"view7\", \"view95\"]",
+        "custkey,c_phone": "[\"view32\", \"view7\", \"view90\"]",
+        "custkey,c_acctbal": "[\"view32\", \"view7\", \"view90\"]",
+        "custkey,mktsegment": "[\"view7\", \"view73\", \"view26\", \"view90\"]",
+        "custkey,n_name": "[]",
+        "custkey,n_comment": "[\"view50\"]"
+    },
+    "psql_edge_projSel_c.csv": {
+        "custkey,c_name": "[\"view26\", \"view67\", \"view126\", \"view7_union_view71\", \"view96_union_view42\"]",
+        "custkey,c_address": "[\"view7\", \"view26\"]",
+        "custkey,c_acctbal": "[\"view26\", \"view67\", \"view126\", \"view7_union_view71\", \"view96_union_view42\"]",
+        "custkey,mktsegment": "[\"view7\", \"view32\", \"view21\", \"view118\"]"
+    },
+    "psql_10_s_ij_ps.csv": {
+        "suppkey,availqty": "[\"view7\", \"view224\", \"view141\"]",
+        "suppkey,supplycost": "[\"view7\", \"view224\", \"view141\"]",
+        "suppkey,ps_comment": "[\"view118\"]",
+        "suppkey,s_name": "[\"view7\", \"view224\", \"view141\"]",
+        "suppkey,s_address": "[\"view7\", \"view118\"]",
+        "suppkey,s_phone": "[\"view7\", \"view224\", \"view141\"]",
+        "suppkey,s_acctbal": "[\"view7\", \"view224\", \"view141\"]"
+    },
+    "psql_8_p_ij_ps.csv": {
+        "partkey,availqty": "[\"view7\", \"view224\", \"view141\"]",
+        "partkey,ps_comment": "[\"view118_union_view7\"]",
+        "partkey,supplycost": "[\"view7\", \"view224\", \"view141\"]",
+        "partkey,p_name": "[\"view7\"]",
+        "partkey,mfgr": "[]",
+        "partkey,brand": "[\"view118\"]",
+        "partkey,type": "[\"view7\"]",
+        "partkey,size": "[\"view7\", \"view224\", \"view141\"]",
+        "partkey,container": "[\"view7\"]",
+        "partkey,retailprice": "[\"view7\", \"view224\", \"view141\"]"
+    },
+    "psql_2_c_rj_asia.csv": {
+        "custkey,c_name": "[\"view8\"]",
+        "custkey,c_address": "[\"view8\", \"view53\", \"view43\", \"view99\"]",
+        "custkey,nationkey": "[\"view8\"]",
+        "custkey,c_phone": "[\"view8\"]",
+        "custkey,c_acctbal": "[\"view8\"]",
+        "custkey,mktsegment": "[\"view53\", \"view99\"]",
+        "custkey,n_name": "[]",
+        "custkey,n_comment": "[\"view53\"]"
+    },
+    "psql_edge_projSel_s.csv": {
+        "suppkey,s_name": "[\"view10\"]",
+        "suppkey,s_address": "[\"view10\", \"view112_union_view31\"]",
+        "suppkey,s_phone": "[\"view10\"]"
+    },
+    "psql_edge_projSel_p.csv": {
+        "partkey,p_name": "[\"view10\", \"view43\", \"view99\"]",
+        "partkey,mfgr": "[]",
+        "partkey,retailprice": "[\"view10\"]",
+        "partkey,p_comment": "[\"view53\"]"
+    },
+    "psql_9_s_oj_ps.csv": {
+        "suppkey,availqty": "[\"view43\"]",
+        "suppkey,supplycost": "[\"view43\"]",
+        "suppkey,ps_comment": "[\"view53\"]",
+        "suppkey,s_name": "[\"view43\"]",
+        "suppkey,s_address": "[\"view43\", \"view99\"]",
+        "suppkey,s_phone": "[\"view43\"]",
+        "suppkey,s_acctbal": "[\"view43\"]"
+    },
+    "psql_15_c_oj_o.csv": {
+        "custkey,orderkey": "[\"view43\"]",
+        "custkey,o_comment": "[\"view43\"]",
+        "custkey,totalprice": "[\"view43\"]",
+        "custkey,clerk": "[\"view53\"]",
+        "custkey,c_name": "[\"view43\"]",
+        "custkey,c_address": "[\"view43\", \"view99\"]",
+        "custkey,c_phone": "[\"view43\"]",
+        "custkey,c_acctbal": "[\"view43\"]",
+        "custkey,mktsegment": "[\"view43\", \"view99\"]"
+    },
+    "psql_14_r_ij_n.csv": {
+        "nationkey,n_name": "[]",
+        "nationkey,n_comment": "[\"view43\"]",
+        "nationkey,regionkey": "[\"view43\"]",
+        "nationkey,r_name": "[\"view43\"]"
+    },
+    "psql_13_r_oj_n.csv": {
+        "nationkey,n_name": "[]",
+        "nationkey,n_comment": "[\"view28\"]",
+        "nationkey,regionkey": "[\"view28\", \"view164\", \"view261\", \"view253\"]",
+        "nationkey,r_name": "[\"view28\"]"
+    },
+    "psql_4_c_union_oj_n.csv": {
+        "custkey,c_name": "[\"view28\", \"view86\", \"view93\", \"view164\"]",
+        "custkey,c_address": "[\"view28\", \"view93\", \"view39\", \"view109\"]",
+        "custkey,nationkey": "[\"view28\", \"view86\", \"view93\", \"view164\"]",
+        "custkey,c_phone": "[\"view28\", \"view86\", \"view93\", \"view164\"]",
+        "custkey,c_acctbal": "[\"view28\", \"view86\", \"view93\", \"view164\"]",
+        "custkey,mktsegment": "[\"view28\", \"view109\"]",
+        "custkey,n_name": "[]",
+        "custkey,n_comment": "[\"view28\"]"
+    },
+    "psql_7_p_oj_ps.csv": {
+        "partkey,availqty": "[\"view28\", \"view164\", \"view261\", \"view253\"]",
+        "partkey,ps_comment": "[\"view28\", \"view93\"]",
+        "partkey,supplycost": "[\"view28\", \"view164\", \"view261\", \"view253\"]",
+        "partkey,p_name": "[\"view73\"]",
+        "partkey,mfgr": "[]",
+        "partkey,brand": "[\"view73\"]",
+        "partkey,type": "[\"view28\", \"view93\"]",
+        "partkey,size": "[\"view28\", \"view164\", \"view261\", \"view253\"]",
+        "partkey,container": "[\"view73\"]",
+        "partkey,retailprice": "[\"view28\", \"view164\", \"view261\", \"view253\"]"
+    },
+    "psql_edge_projSel_o.csv": {
+        "orderkey,totalprice": "[\"view13\", \"view27\", \"view139\", \"view28\", \"view106\", \"view142\", \"view77\", \"view100\"]",
+        "orderkey,clerk": "[\"view13\"]",
+        "orderkey,o_comment": "[\"view28_union_view13\"]"
+    },
+    "psql_5_c_union_ij_n.csv": {
+        "custkey,c_name": "[\"view28\", \"view86\", \"view93\", \"view164\"]",
+        "custkey,c_address": "[\"view28\", \"view93\", \"view39\", \"view109\"]",
+        "custkey,nationkey": "[\"view28\", \"view86\", \"view93\", \"view164\"]",
+        "custkey,c_phone": "[\"view28\", \"view86\", \"view93\", \"view164\"]",
+        "custkey,c_acctbal": "[\"view28\", \"view86\", \"view93\", \"view164\"]",
+        "custkey,mktsegment": "[\"view28\", \"view109\"]",
+        "custkey,n_name": "[]",
+        "custkey,n_comment": "[\"view28\"]"
+    },
+    "psql_11_n_oj_s.csv": {
+        "suppkey,s_name": "[\"view28\", \"view164\", \"view261\", \"view253\"]",
+        "suppkey,s_address": "[\"view28\", \"view93\"]",
+        "suppkey,s_phone": "[\"view28\", \"view164\", \"view261\", \"view253\"]",
+        "suppkey,s_acctbal": "[\"view28\", \"view164\", \"view261\", \"view253\"]",
+        "suppkey,nationkey": "[\"view28\", \"view164\", \"view261\", \"view253\"]",
+        "suppkey,n_name": "[]",
+        "suppkey,n_comment": "[\"view28\"]"
+    },
+    "psql_edge_projSel_n.csv": {
+        "nationkey,n_name": "[\"view7\"]",
+        "nationkey,n_comment": "[\"view7\"]"
+    },
+    "psql_edge_projSel_ps.csv": {
+        "partkey,availqty": "[\"view13\", \"view27\", \"view139\", \"view28\", \"view106\", \"view142\", \"view77\", \"view100\"]",
+        "partkey,supplycost": "[\"view13\", \"view27\", \"view139\", \"view28\", \"view106\", \"view142\", \"view77\", \"view100\"]",
+        "partkey,ps_comment": "[\"view28_union_view13\"]"
+    },
+    "psql_many_p_ps_l_oj.csv": {
+        "partkey,p_name": "[\"view73\"]",
+        "partkey,mfgr": "[]",
+        "partkey,brand": "[\"view73\"]",
+        "partkey,type": "[\"view73\"]",
+        "partkey,size": "[\"view73\"]",
+        "partkey,retailprice": "[\"view73\"]",
+        "partkey,container": "[\"view73\"]",
+        "partkey,suppkey": "[\"view73\"]",
+        "partkey,availqty": "[\"view73\"]",
+        "partkey,supplycost": "[\"view73\"]",
+        "partkey,ps_comment": "[\"view73\"]",
+        "partkey,linenumber": "[]",
+        "partkey,quantity": "[]",
+        "partkey,extendedprice": "[]",
+        "partkey,discount": "[]",
+        "partkey,returnflag": "[]",
+        "partkey,linestatus": "[]",
+        "partkey,shipdate": "[]",
+        "partkey,commitdate": "[]",
+        "partkey,shipinstruct": "[]"
+    },
+    "psql_6_c_ij_n.csv": {
+        "custkey,c_name": "[\"view29\", \"view103\"]",
+        "custkey,c_address": "[\"view29\", \"view103\"]",
+        "custkey,nationkey": "[\"view103\", \"view244\", \"view204\"]",
+        "custkey,c_phone": "[\"view103\", \"view29\", \"view212\"]",
+        "custkey,c_acctbal": "[\"view103\", \"view29\", \"view212\"]",
+        "custkey,mktsegment": "[\"view29\", \"view103\"]",
+        "custkey,n_name": "[]",
+        "custkey,n_comment": "[\"view103_union_view29\"]"
+    },
+    "psql_many_c_o_l_oj.csv": {
+        "orderkey,orderstatus": "[\"view103\", \"view276\", \"view296\"]",
+        "orderkey,totalprice": "[\"view103\", \"view296\", \"view450\"]",
+        "orderkey,clerk": "[\"view103\"]",
+        "orderkey,custkey": "[]",
+        "orderkey,c_name": "[\"view103\", \"view225\"]",
+        "orderkey,c_address": "[\"view103\", \"view225\"]",
+        "orderkey,c_phone": "[\"view103\", \"view225\"]",
+        "orderkey,c_acctbal": "[\"view103\", \"view225\"]",
+        "orderkey,mktsegment": "[]",
+        "orderkey,linenumber": "[\"view103\", \"view296\", \"view450\"]",
+        "orderkey,quantity": "[\"view103\", \"view296\", \"view450\"]",
+        "orderkey,extendedprice": "[\"view103\", \"view296\", \"view450\"]",
+        "orderkey,discount": "[\"view103\", \"view296\", \"view450\"]",
+        "orderkey,returnflag": "[\"view103\", \"view225\"]",
+        "orderkey,linestatus": "[\"view103\", \"view276\", \"view296\"]",
+        "orderkey,shipdate": "[\"view103\", \"view296\", \"view450\"]",
+        "orderkey,commitdate": "[\"view103\", \"view296\", \"view450\"]",
+        "orderkey,shipinstruct": "[\"view103\"]"
+    }
+}

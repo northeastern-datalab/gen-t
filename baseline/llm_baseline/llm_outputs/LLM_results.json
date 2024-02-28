@@ -1,0 +1,143 @@
+{
+    "psql_many_c_o_l_n_oj.csv": {
+        "TDR_Recall": 0.0,
+        "TDR_Precision": 0.0,
+        "Instance_Similarity": 0.42105263157894735,
+        "Instance_Divergence": 0.5789473684210527,
+        "KL_Divergence": 12.337662337662337
+    },
+    "psql_9_s_oj_ps.csv": {
+        "TDR_Recall": 0.3333333333333333,
+        "TDR_Precision": 0.3333333333333333,
+        "Instance_Similarity": 0.9166666666666666,
+        "Instance_Divergence": 0.08333333333333337,
+        "KL_Divergence": 0.8571428571428571
+    },
+    "psql_15_c_oj_o.csv": {
+        "TDR_Recall": 0.0,
+        "TDR_Precision": 0.0,
+        "Instance_Similarity": 0.14210526315789473,
+        "Instance_Divergence": 0.8578947368421053,
+        "KL_Divergence": 52.77777777777779
+    },
+    "psql_14_r_ij_n.csv": {
+        "TDR_Recall": 0.16,
+        "TDR_Precision": 0.16,
+        "Instance_Similarity": 0.8320000000000003,
+        "Instance_Divergence": 0.1679999999999997,
+        "KL_Divergence": 5.25
+    },
+    "psql_edge_projSel_o.csv": {
+        "TDR_Recall": 0.0,
+        "TDR_Precision": 0.0,
+        "Instance_Similarity": 0.055,
+        "Instance_Divergence": 0.945,
+        "KL_Divergence": 616.6666666666666
+    },
+    "psql_edge_projSel_n.csv": {
+        "TDR_Recall": 0.6666666666666666,
+        "TDR_Precision": 0.6666666666666666,
+        "Instance_Similarity": 0.8888888888888888,
+        "Instance_Divergence": 0.11111111111111116,
+        "KL_Divergence": 2.5
+    },
+    "psql_11_n_oj_s.csv": {
+        "TDR_Recall": 0.020833333333333332,
+        "TDR_Precision": 0.058823529411764705,
+        "Instance_Similarity": 0.0625,
+        "Instance_Divergence": 0.9375,
+        "KL_Divergence": 224.91428571428574
+    },
+    "psql_13_r_oj_n.csv": {
+        "TDR_Recall": 0.68,
+        "TDR_Precision": 0.68,
+        "Instance_Similarity": 0.936,
+        "Instance_Divergence": 0.06399999999999995,
+        "KL_Divergence": 2.0
+    },
+    "psql_7_p_oj_ps.csv": {
+        "TDR_Recall": 0.8947368421052632,
+        "TDR_Precision": 0.85,
+        "Instance_Similarity": 0.9425837320574163,
+        "Instance_Divergence": 0.0574162679425837,
+        "KL_Divergence": 0.6333333333333334
+    },
+    "psql_many_p_ps_l_oj.csv": {
+        "TDR_Recall": 0.0,
+        "TDR_Precision": 0.0,
+        "Instance_Similarity": 0.05012531328320802,
+        "Instance_Divergence": 0.949874686716792,
+        "KL_Divergence": 171.95
+    },
+    "psql_many_c_o_l_oj.csv": {
+        "TDR_Recall": 0.0,
+        "TDR_Precision": 0.0,
+        "Instance_Similarity": 0.016620498614958446,
+        "Instance_Divergence": 0.9833795013850416,
+        "KL_Divergence": 184.19444444444446
+    },
+    "psql_12_n_ij_s.csv": {
+        "TDR_Recall": 0.08333333333333333,
+        "TDR_Precision": 0.5,
+        "Instance_Similarity": 0.14583333333333334,
+        "Instance_Divergence": 0.8541666666666666,
+        "KL_Divergence": 126.42857142857143
+    },
+    "psql_16_c_ij_o.csv": {
+        "TDR_Recall": 0.10526315789473684,
+        "TDR_Precision": 0.13333333333333333,
+        "Instance_Similarity": 0.6315789473684211,
+        "Instance_Divergence": 0.36842105263157887,
+        "KL_Divergence": 6.408730158730159
+    },
+    "psql_many_c_n_s_oj.csv": {
+        "TDR_Recall": 0.3333333333333333,
+        "TDR_Precision": 0.1111111111111111,
+        "Instance_Similarity": 0.7350427350427351,
+        "Instance_Divergence": 0.2649572649572649,
+        "KL_Divergence": 1.8214285714285712
+    },
+    "psql_10_s_ij_ps.csv": {
+        "TDR_Recall": 0.0,
+        "TDR_Precision": 0.0,
+        "Instance_Similarity": 0.4583333333333333,
+        "Instance_Divergence": 0.5416666666666667,
+        "KL_Divergence": 3.685714285714286
+    },
+    "psql_edge_projSel_c.csv": {
+        "TDR_Recall": 1.0,
+        "TDR_Precision": 1.0,
+        "Instance_Similarity": 1.0,
+        "Instance_Divergence": 0.0,
+        "KL_Divergence": 0.0
+    },
+    "psql_edge_projSel_p.csv": {
+        "TDR_Recall": 0.01,
+        "TDR_Precision": 0.008,
+        "Instance_Similarity": 0.012,
+        "Instance_Divergence": 0.988,
+        "KL_Divergence": 2500.0
+    },
+    "psql_many_c_n_s_r_oj.csv": {
+        "TDR_Recall": 0.0,
+        "TDR_Precision": 0.0,
+        "Instance_Similarity": 0.25,
+        "Instance_Divergence": 0.75,
+        "KL_Divergence": 8.25
+    },
+    "psql_edge_projSel_s.csv": {
+        "TDR_Recall": 0.25,
+        "TDR_Precision": 0.3548387096774194,
+        "Instance_Similarity": 0.25,
+        "Instance_Divergence": 0.75,
+        "KL_Divergence": 66.0
+    },
+    "Total": {
+        "Number of Sources": 19,
+        "TDR_Recall": 0.2388157894736842,
+        "TDR_Precision": 0.2555845622912436,
+        "Instance_Similarity": 0.46033322859609493,
+        "Instance_Divergence": 0.5396667714039051,
+        "KL_Divergence": 209.8250398724083
+    }
+}

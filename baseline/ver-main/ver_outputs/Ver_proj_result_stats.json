@@ -1,0 +1,178 @@
+{
+    "psql_12_n_ij_s.csv": {
+        "TDR_Recall": 0.5208333333333334,
+        "TDR_Precision": 0.30120481927710846,
+        "Instance_Similarity": 0.7604166666666666,
+        "Instance_Divergence": 0.23958333333333337,
+        "KL_Divergence": 22.214285714285715
+    },
+    "psql_16_c_ij_o.csv": {
+        "TDR_Recall": 0.7719298245614035,
+        "TDR_Precision": 0.4064640246248557,
+        "Instance_Similarity": 0.8859649122807017,
+        "Instance_Divergence": 0.11403508771929827,
+        "KL_Divergence": 7.055555555555555
+    },
+    "psql_many_c_n_s_oj.csv": {
+        "TDR_Recall": 0.8518518518518519,
+        "TDR_Precision": 0.09422657952069717,
+        "Instance_Similarity": 0.9259259259259259,
+        "Instance_Divergence": 0.07407407407407407,
+        "KL_Divergence": 3.5416666666666665
+    },
+    "psql_0_c_oj_asia.csv": {
+        "TDR_Recall": 0.8157894736842105,
+        "TDR_Precision": 0.5395161290322581,
+        "Instance_Similarity": 0.9078947368421053,
+        "Instance_Divergence": 0.09210526315789475,
+        "KL_Divergence": 5.8125
+    },
+    "psql_edge_projSel_c.csv": {
+        "TDR_Recall": 0.7894736842105263,
+        "TDR_Precision": 0.4792319749216301,
+        "Instance_Similarity": 0.8947368421052632,
+        "Instance_Divergence": 0.10526315789473684,
+        "KL_Divergence": 5.75
+    },
+    "psql_10_s_ij_ps.csv": {
+        "TDR_Recall": 1.0,
+        "TDR_Precision": 0.08571428571428572,
+        "Instance_Similarity": 1.0,
+        "Instance_Divergence": 0.0,
+        "KL_Divergence": 2.5714285714285716
+    },
+    "psql_8_p_ij_ps.csv": {
+        "TDR_Recall": 0.7333333333333334,
+        "TDR_Precision": 0.25814114422343576,
+        "Instance_Similarity": 0.8666666666666667,
+        "Instance_Divergence": 0.13333333333333336,
+        "KL_Divergence": 5.7
+    },
+    "psql_2_c_rj_asia.csv": {
+        "TDR_Recall": 0.9210526315789473,
+        "TDR_Precision": 0.5672268907563025,
+        "Instance_Similarity": 0.9605263157894737,
+        "Instance_Divergence": 0.03947368421052633,
+        "KL_Divergence": 7.3125
+    },
+    "psql_edge_projSel_s.csv": {
+        "TDR_Recall": 0.8181818181818182,
+        "TDR_Precision": 0.46153846153846156,
+        "Instance_Similarity": 0.9090909090909091,
+        "Instance_Divergence": 0.09090909090909094,
+        "KL_Divergence": 16.0
+    },
+    "psql_edge_projSel_p.csv": {
+        "TDR_Recall": 0.72,
+        "TDR_Precision": 0.43902439024390244,
+        "Instance_Similarity": 0.86,
+        "Instance_Divergence": 0.14,
+        "KL_Divergence": 41.0
+    },
+    "psql_9_s_oj_ps.csv": {
+        "TDR_Recall": 0.5555555555555556,
+        "TDR_Precision": 0.06518758569113797,
+        "Instance_Similarity": 0.7777777777777778,
+        "Instance_Divergence": 0.2222222222222222,
+        "KL_Divergence": 3.5
+    },
+    "psql_15_c_oj_o.csv": {
+        "TDR_Recall": 0.7236842105263158,
+        "TDR_Precision": 0.31850002036493974,
+        "Instance_Similarity": 0.8618421052631579,
+        "Instance_Divergence": 0.13815789473684212,
+        "KL_Divergence": 6.444444444444445
+    },
+    "psql_14_r_ij_n.csv": {
+        "TDR_Recall": 0.8,
+        "TDR_Precision": 0.8,
+        "Instance_Similarity": 0.9,
+        "Instance_Divergence": 0.09999999999999998,
+        "KL_Divergence": 10.0
+    },
+    "psql_13_r_oj_n.csv": {
+        "TDR_Recall": 0.8,
+        "TDR_Precision": 0.8,
+        "Instance_Similarity": 0.9,
+        "Instance_Divergence": 0.09999999999999998,
+        "KL_Divergence": 10.0
+    },
+    "psql_4_c_union_oj_n.csv": {
+        "TDR_Recall": 0.9210526315789473,
+        "TDR_Precision": 0.3287944807552651,
+        "Instance_Similarity": 0.9605263157894737,
+        "Instance_Divergence": 0.03947368421052633,
+        "KL_Divergence": 6.1875
+    },
+    "psql_7_p_oj_ps.csv": {
+        "TDR_Recall": 0.8552631578947368,
+        "TDR_Precision": 0.3302660533910534,
+        "Instance_Similarity": 0.9276315789473684,
+        "Instance_Divergence": 0.07236842105263158,
+        "KL_Divergence": 3.55
+    },
+    "psql_edge_projSel_o.csv": {
+        "TDR_Recall": 0.77,
+        "TDR_Precision": 0.45294117647058824,
+        "Instance_Similarity": 0.885,
+        "Instance_Divergence": 0.11499999999999999,
+        "KL_Divergence": 37.166666666666664
+    },
+    "psql_5_c_union_ij_n.csv": {
+        "TDR_Recall": 0.8947368421052632,
+        "TDR_Precision": 0.3254240346445327,
+        "Instance_Similarity": 0.9473684210526316,
+        "Instance_Divergence": 0.05263157894736842,
+        "KL_Divergence": 7.375
+    },
+    "psql_11_n_oj_s.csv": {
+        "TDR_Recall": 0.5833333333333334,
+        "TDR_Precision": 0.3888888888888889,
+        "Instance_Similarity": 0.7916666666666666,
+        "Instance_Divergence": 0.20833333333333337,
+        "KL_Divergence": 22.0
+    },
+    "psql_edge_projSel_n.csv": {
+        "TDR_Recall": 0.3333333333333333,
+        "TDR_Precision": 0.29411764705882354,
+        "Instance_Similarity": 0.6666666666666666,
+        "Instance_Divergence": 0.33333333333333337,
+        "KL_Divergence": 6.25
+    },
+    "psql_edge_projSel_ps.csv": {
+        "TDR_Recall": 0.05263157894736842,
+        "TDR_Precision": 0.005747126436781609,
+        "Instance_Similarity": 0.5263157894736842,
+        "Instance_Divergence": 0.4736842105263158,
+        "KL_Divergence": 9.333333333333334
+    },
+    "psql_many_p_ps_l_oj.csv": {
+        "TDR_Recall": 0.8736842105263157,
+        "TDR_Precision": 0.28719211715038834,
+        "Instance_Similarity": 0.9368421052631579,
+        "Instance_Divergence": 0.06315789473684211,
+        "KL_Divergence": 1.875
+    },
+    "psql_6_c_ij_n.csv": {
+        "TDR_Recall": 0.868421052631579,
+        "TDR_Precision": 0.2166289592760181,
+        "Instance_Similarity": 0.9342105263157895,
+        "Instance_Divergence": 0.06578947368421051,
+        "KL_Divergence": 7.4375
+    },
+    "psql_many_c_o_l_oj.csv": {
+        "TDR_Recall": 0.9210526315789473,
+        "TDR_Precision": 0.17392241379310344,
+        "Instance_Similarity": 0.9605263157894737,
+        "Instance_Divergence": 0.03947368421052633,
+        "KL_Divergence": 1.3611111111111112
+    },
+    "Total": {
+        "Number of Sources": 24,
+        "TDR_Recall": 0.7456331036977967,
+        "TDR_Precision": 0.35082913349060246,
+        "Instance_Similarity": 0.8728165518488984,
+        "Instance_Divergence": 0.12718344815110166,
+        "KL_Divergence": 10.393270502645503
+    }
+}

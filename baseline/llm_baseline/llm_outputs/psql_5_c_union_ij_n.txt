@@ -1,0 +1,31 @@
+I have integrated the tables from the data lake using Select-Project-Join-Union queries to reproduce the example table. Here is the tabular result:
+
+```plaintext
+| custkey |          c_name          |         c_address          | nationkey |      c_phone       | c_acctbal | mktsegment | n_name  |                        n_comment                        |
+|---------|--------------------------|---------------------------|-----------|---------------------|-----------|------------|---------|--------------------------------------------------------|
+| 20072   | Customer#000020072       | rJgwmlvd8N3 rea           | 21        | 31-944-768-4169    | 3942.69   | BUILDING   | VIETNAM  | hely enticingly express accounts. even, final              |
+| 29914   | Customer#000029914       | JOtVR6vREO24tzO           | 14        | 24-363-612-9039    | 9292.29   | MACHINERY  | RUSSIA  | rpEftuPCcTQqptMFWJ6 T9Oe2eL0bNwI HynEgn6        |
+| 36754   | Customer#000036754       | 7KvtZ7kcUOsxPgLvsRghI     | 14        | 24-719-816-2983    | -754.63   | BUILDING   | RUSSIA  | rpEftuPCcTQqptMFWJ6 T9Oe2eL0bNwI HynEgn6        |
+| 38842   | Customer#000038842       | STLboyuwjUHxKQMu9Qjozg6F  | 7         | 17-653-865-8703    | 3587.62   | MACHINERY  | GERMANY  | yvncoKy27Qo6ql1r    |
+| 40192   | Customer#000040192       | 2oauJhhHRN6ECzT6km,hZhOXi4hL | 12       | 22-283-384-5116    | 5711.01   | BUILDING   | JAPAN  | qtx0t   |
+| 42382   | Customer#000042382       | RlPmdIHgbzjyaeycGMLQ1425sClEwIReE7oNMQ | 5       | 15-257-541-2452    | 4553.99   | HOUSEHOLD  | UNITED KINGDOM  | 5IQU5o u 6G6vxJWGLYtWmEZQcP2F 7sKCTJ2        |
+| 46429   | Customer#000046429       | 2YX4MCUZyba59PfgyCX5mtfNMgvyU0jxVf66eXgY | 2       | 12-665-546-5226    | 811.89    | MACHINERY  | BRAZIL  | 5IQU5o u 6G6vxJWGLYtWmEZQcP2F 7sKCTJ2        |
+| 56941   | Customer#000056941       | mh5crtVfXMl41S8xIq         | 1         | 11-516-696-2419    | 5918.5    | HOUSEHOLD  | ARGENTINA  | 5IQU5o u 6G6vxJWGLYtWmEZQcP2F 7sKCTJ2        |
+| 60310   | Customer#000060310       | aLcptO7Sz49DuwAQpXaP2lyXA | 16       | 26-463-290-9971    | 120098    | BUILDING   | INDIA  | Qv5Pihom W6y5ZLFX         |
+| 68609   | Customer#000068609       | ,Ot0EWNWkUZiSyDn jCro9L3KA | 24       | 34-960-303-8843    | -371.01   | MACHINERY  | UNITED STATES  | krdRohovrx H89Xi7        |
+| 74524   | Customer#000074524       | Q,63JuizyNGD6xfK           | 8        | 18-973-442-9434    | 4411.47   | HOUSEHOLD  | CANADA  | hgqUf,1sg2BXh      |
+| 76360   | Customer#000076360       | CJZjPvD,YFLUvh3p9RpI       | 7        | 17-935-166-8333    | 3097.35   | MACHINERY  | GERMANY  | krdRohovrx H89Xi7        |
+| 82392   | Customer#000082392       | 1,ImX8Btv,I,AyKOZ6oMcAfz9 | 18       | 28-899-948-4917    | 2948.84   | AUTOMOBILE  | SOUTH AFRICA  | hcBBgf         |
+| 82748   | Customer#000082748       | w9yMZiuzLdFzj9HogfG4nQRRp2ewrLbYneL | 23       | 33-424-891-6955    | 5361.42   | AUTOMOBILE  | SPAIN  | AvfCWDBhIWiWNbYe,NN4yFhKYF   |
+| 83544   | Customer#000083544       | DGBuW8PcfD,QUiUohGZ6      | 23       | 33-594-104-3472    | 3935.69   | MACHINERY  | SPAIN  | AvfCWDBhIWiWNbYe,NN4yFhKYF   |
+| 86841   | Customer#000086841       | iNUU4RRO4eJMMiV            | 6        | 16-146-801-8112    | 2908.93   | MACHINERY  | FRANCE  | aY,glXzxcKWlWQxCyTNmtONIyitTN2       |
+| 91507   | Customer#000091507       | sA7dCoZXGon9FywmzoEJukrQH | 11       | 21-879-753-4309    | 5056.77   | BUILDING   | ITALY  | 9v      |
+| 91546   | Customer#000091546       | Nj,wWnw0,0fAei4mBvvcOpBvJ3yU5Y2   | 9        | 19-932-177-3682    | 3624.45   | BUILDING   | IRAN  | t0ZSUHX8       |
+| 91718   | Customer#000091718       | f,sm96N55PAt6ZTfM3B6k9ojMkR3lG       | 6        | 16-576-394-6948    | 7194.39   | BUILDING   | FRANCE  | aY,glXzxcKWlWQxCyTNmtONIyitTN2       |
+| 92576   | Customer#000092576       | ,fCWTpY67cZU J             | 8        | 18-361-990-1342    | 4342.01   | BUILDING   | CANADA  | hgqUf,1sg2BXh      |
+| 94412   | Customer#000094412       | Y3gSjm25nL,l,lYbZ3R         | 22       | 32-190-929-9536    | 6307.73   | BUILDING   | TURKEY  | LwtjX        |
+| 96709   | Customer#000096709       | M,RE2hyxRj8,YyVU8iONmZ9Pb1jC7   | 22       | 32-929-819-5094    | 2890.99   | MACHINERY  | TURKEY  | LwtjX        |
+| 98221   | Customer#000098221       | oS3EsHRsBex0yYVjj           | 15       | 25-543-733-5633    | 3173.23   | BUILDING   | MEXICO  | IhScKjuTp  |
+```
+
+This table is a reproduction of the example table using data lake tables, and it includes the specified columns and their respective values. Let me know if you need any further details or adjustments.

@@ -1,0 +1,19 @@
+Here is the integrated table reproducing all rows from the example table using data from the data lake:
+
+| custkey | orderkey | o_comment                                            | totalprice | clerk          | c_name            | c_address                                      | c_phone          | c_acctbal | mktsegment |
+|---------|----------|------------------------------------------------------|------------|----------------|-------------------|------------------------------------------------|------------------|------------|------------|
+| 20072   | 115751   | equests. regular instructions cajole among the regula| 257828     | Clerk#000000425| Customer#000020072| rJgwmlvd8N3 rea                              | 31-944-768-4169 | 3942.69    | BUILDING   |
+| 86057   | 528903   | e ironic accounts. deposits wake slyly unusual, unus| 193310     | Clerk#000000694| Customer#000086057| ,ndjpIeit3Vbfu,hG,A                           | 29-989-848-2892 | 6840.62    | FURNITURE  |
+| 42382   | 644961   | s. carefully even asymptot                          | 168287     | Clerk#000000337| Customer#000042382| RlPmdIHgbzjyaeycGMLQ1425sClEwIReE7oNMQ       | 15-257-541-2452 | 4553.99    | HOUSEHOLD  |
+| 76360   | 962083   | players. furiously ironic dolphins boost. slyly     | 36011.7    | Clerk#000000384| Customer#000076360| CJZjPvD,YFLUvhZq                              | 18-533-579-4253 | 8561.2     | BUILDING   |
+| 141361  | 1129760  | sly pending platelets. blit                         | 151678     | Clerk#000000541| Customer#000141361| bKvoDg1sRT62c                                 | 12-163-164-5746 | -671.77    | FURNITURE  |
+| 56941   | 1405766  | ly unusual requests. furiously final depths sleep acc| 101574     | Clerk#000000225| Customer#000056941| mh5crtVfXMl41S8xIq                            | 11-516-696-2419 | 5918.5     | HOUSEHOLD  |
+| 149170  | 1579780  | lar accounts should have to s                       | 28092.1    | Clerk#000000563| Customer#000149170| RwS8URRhF71DlSKxYZfI                          | 13-602-841-5920 | -274.19    | BUILDING   |
+| 38842   | 1778788  | osits. blithely even pinto beans wake carefully. e  | 149999     | Clerk#000000348| Customer#000038842| STLboyuwjUHxKQMu9Qjozg6F,Emzh8n              | 17-653-865-8703 | 3587.62    | MACHINERY  |
+| 60310   | 1855009  | fully even gifts. unusual, busy requests wake fluf | 311964     | Clerk#000000617| Customer#000060310| aLcptO7Sz49DuwAQpXaP2lyXA                     | 26-463-290-9971 | 4118.83    | BUILDING   |
+| 68609   | 1982277  | rly ironic requests sl                             | 216713     | Clerk#000000938| Customer#000068609| ,Ot0EWNWkUZiSyDn jCro9L3KA                    | 34-960-303-8843 | -371.01    | MACHINERY  |
+| 99898   | 2062945  | nal packages. slyly express                        | 207428     | Clerk#000000664| Customer#000099898| KdJyqwxlmkEYcJQV4feT68fp                      | 18-151-732-1909 | 2344.35    | AUTOMOBILE |
+| 29914   | 2812610  | excuses. regular, ironic accounts haggl             | 97491.6    | Clerk#000000973| Customer#000029914| JOtVR6vREO24tzO                               | 24-363-612-9039 | 9292.29    | MACHINERY  |
+| 86621   | 3243554  | nan                                                  | nan        | Clerk#000000703| Customer#000086621| 0YstW3FgYs ,hG                               | 29-328-619-4806 | 4124.29    | FURNITURE  |
+
+Please note that the "o_comment" column may not be fully displayed due to space constraints. If you have specific queries or if you'd like more information, feel free to ask!

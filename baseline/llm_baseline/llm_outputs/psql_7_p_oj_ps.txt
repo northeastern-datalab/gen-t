@@ -1,0 +1,26 @@
+Here is the integrated table using Select-Project-Join-Union queries to reproduce all rows in the example table:
+
+| partkey | availqty | ps_comment | supplycost | p_name | mfgr | brand | type | size | container | retailprice |
+|---------|----------|------------|------------|--------|------|-------|------|------|-----------|-------------|
+| 101271  | nan      | nan        | nan        | dark burlywood navajo chiffon almond | Manufacturer#3 | Brand#33 | STANDARD BURNISHED BRASS | 15   | LG PKG     | 1272.27     |
+| 10340   | nan      | nan        | nan        | spring gainsboro navajo sandy rose | Manufacturer#1 | Brand#14 | LARGE BURNISHED COPPER | 13   | SM JAR     | 1250.34     |
+| 104872  | nan      | nan        | nan        | light antique cream smoke chocolate | Manufacturer#5 | Brand#52 | STANDARD ANODIZED COPPER | 46   | SM PKG     | 1876.87     |
+| 108353  | nan      | nan        | nan        | beige sienna aquamarine plum antique | Manufacturer#1 | Brand#11 | LARGE BRUSHED BRASS | 47   | SM DRUM    | 1361.35     |
+| 101646  | nan      | nan        | nan        | orange burlywood coral white purple | Manufacturer#3 | Brand#35 | SMALL BURNISHED BRASS | 10   | JUMBO PKG  | 1647.64     |
+| 10327   | nan      | nan        | nan        | misty violet powder papaya lace | Manufacturer#5 | Brand#53 | MEDIUM PLATED BRASS | 37   | JUMBO PACK | 1237.32     |
+| 101818  | nan      | nan        | nan        | smoke sienna gainsboro frosted magenta | Manufacturer#4 | Brand#43 | LARGE PLATED STEEL | 48   | LG CAN     | 1819.81     |
+| 102842  | nan      | nan        | nan        | black peach burlywood cyan gainsboro | Manufacturer#3 | Brand#31 | MEDIUM ANODIZED STEEL | 14   | SM PKG     | 1844.84     |
+| 108311  | nan      | nan        | nan        | wheat metallic salmon beige maroon | Manufacturer#1 | Brand#14 | MEDIUM PLATED STEEL | 11   | JUMBO BAG  | 1319.31     |
+| 100347  | nan      | nan        | nan        | orchid forest chartreuse brown pale | Manufacturer#4 | Brand#41 | LARGE BURNISHED BRASS | 43   | MED DRUM   | 1347.34     |
+| 107703  | nan      | nan        | nan        | aquamarine lace azure wheat firebrick | Manufacturer#5 | Brand#53 | MEDIUM ANODIZED BRASS | 12   | SM JAR     | 1710.7      |
+| 104159  | nan      | nan        | nan        | cyan slate lavender hot wheat | Manufacturer#2 | Brand#21 | LARGE BURNISHED NICKEL | 14   | WRAP JAR   | 1163.15     |
+| 107729  | nan      | nan        | nan        | navy chocolate blush lemon grey | Manufacturer#1 | Brand#13 | MEDIUM POLISHED BRASS | 47   | MED CASE   | 1736.72     |
+| 103360  | nan      | nan        | nan        | almond tomato powder lavender peru | Manufacturer#3 | Brand#34 | SMALL PLATED BRASS | 17   | LG PACK    | 1363.36     |
+| 105230  | nan      | nan        | nan        | tomato metallic pink ivory firebrick | Manufacturer#5 | Brand#54 | STANDARD PLATED BRASS | 29   | LG PKG     | 1235.23     |
+| 105666  | 7234     | furiously even excuses would sleep carefully above the carefully | 681.13 | orchid burnished floral chartreuse navajo | Manufacturer#4 | Brand#45 | LARGE ANODIZED BRASS | 5    | SM BAG     | 1671.66     |
+| 104128  | nan      | nan        | nan        | white lavender medium pink sandy | Manufacturer#5 | Brand#53 | SMALL BRUSHED STEEL | 18   | SM BOX     | 1132.12     |
+| 10228   | nan      | nan        | nan        | chiffon antique aquamarine misty spring | Manufacturer#3 | Brand#32 | PROMO BURNISHED STEEL | 20   | LG BAG     | 1132.79     |
+| 10781   | nan      | nan        | nan        | olive medium light spring dark | Manufacturer#3 | Brand#31 | MEDIUM BRUSHED BRASS | 22   | MED BAG    | 1262.77     |
+| 102682  | nan      | nan        | nan        | frosted papaya sandy floral azure | Manufacturer#2 | Brand#21 | MEDIUM POLISHED STEEL | 29   | WRAP CASE  | 1655.2      |
+
+I hope this meets your expectations. If you have any specific queries or modifications you'd like, feel free to let me know!

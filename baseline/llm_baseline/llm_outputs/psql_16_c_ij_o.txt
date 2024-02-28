@@ -1,0 +1,23 @@
+Sure, I will integrate the tables from the data lake to reproduce the example table using Select-Project-Join-Union queries. Here's the resulting table:
+
+```plaintext
+|   orderkey | orderstatus   |   totalprice | clerk           |   custkey | c_name             | c_address                                | c_phone         |   c_acctbal | mktsegment   |
+|-----------:|:--------------|-------------:|:----------------|----------:|:-------------------|:-----------------------------------------|:----------------|------------:|:-------------|
+|    1982277 | P             |     216713   | Clerk#000000938 |     68609 | Customer#000068609 | ,Ot0EWNWkUZiSyDn jCro9L3KA               | 34-960-303-8843 |     -371.01 | MACHINERY    |
+|    1579780 | O             |      28092.1 | Clerk#000000563 |    149170 | Customer#000149170 | RwS8URRhF71DlSKxYZfI                     | 13-602-841-5920 |     -274.19 | BUILDING     |
+|    3903200 | F             |     167607   | Clerk#000000552 |    141982 | Customer#000141982 | Kr2q6cqYPv                               | 21-224-927-8117 |     7549.91 | BUILDING     |
+|     962083 | F             |      36011.7 | Clerk#000000384 |     76360 | Customer#000076360 | CJZjPvD,YFLUvhZq                         | 18-533-579-4253 |     8561.2  | BUILDING     |
+|     115751 | O             |     257828   | Clerk#000000425 |     20072 | Customer#000020072 | rJgwmlvd8N3 rea                          | 31-944-768-4169 |     3942.69 | BUILDING     |
+|     528903 | O             |     193310   | Clerk#000000694 |     86057 | Customer#000086057 | ,ndjpIeit3Vbfu,hG,A                      | 29-989-848-2892 |     6840.62 | FURNITURE    |
+|    1405766 | O             |     101574   | Clerk#000000225 |     56941 | Customer#000056941 | mh5crtVfXMl41S8xIq                       | 11-516-696-2419 |     5918.5  | HOUSEHOLD    |
+|    5377893 | O             |      63214.2 | Clerk#000000771 |     36754 | Customer#000036754 | 7KvtZ7kcUOsxPgLvsRghI                    | 24-719-816-2983 |     -754.63 | BUILDING     |
+|    5031840 | O             |     223266   | Clerk#000000702 |     40192 | Customer#000040192 | 2oauJhhHRN6ECzT6km,hZhOXi4hL             | 22-283-384-5116 |     5711.01 | BUILDING     |
+|    1855009 | O             |     311964   | Clerk#000000617 |     60310 | Customer#000060310 | aLcptO7Sz49DuwAQpXaP2lyXA                | 26-463-290-9971 |     4118.83 | BUILDING     |
+|    2062945 | O             |     207428   | Clerk#000000664 |     99898 | Customer#000099898 | KdJyqwxlmkEYcJQV4feT68fp                 | 18-151-732-1909 |     2344.35 | AUTOMOBILE   |
+|    1778788 | F             |     149999   | Clerk#000000348 |     38842 | Customer#000038842 | STLboyuwjUHxKQMu9Qjozg6F,Emzh8n          | 17-653-865-8703 |     3587.62 | MACHINERY    |
+|    5017286 | F             |     176001   | Clerk#000000074 |     74524 | Customer#000074524 | Q,63JuizyNGD6xfK                         | 18-973-442-9434 |     4411.47 | HOUSEHOLD    |
+|    2812610 | O             |      97480.2 | Clerk#000000478 |     78310 | Customer#000078310 | dBFzjrgQbMaMvZWc8Cl                      | 35-331-869-7475 |     1489.21 | AUTOMOBILE   |
+|    2518313 | O             |     164351   | Clerk#000000219 |     82476 | Customer#000082476 | yNeCYKiYDV,YLcT,VoY                       | 27-241-513-8682 |     3226.95 | AUTOMOBILE   |
+```
+
+Let me know if there's anything specific you would like to explore or if you have any additional requests!
