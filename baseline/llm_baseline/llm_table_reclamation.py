@@ -9,8 +9,8 @@ import time
 client = OpenAI(api_key='')
 
 # Filepath setup
-SOURCES_TABLE_FILEPATH = "/Users/gracefan/Documents/Datasets/tpch_small/queries/"
-DATA_LAKE_FILEPATH = "/Users/gracefan/Documents/Datasets/tpch_small/datalake/"
+SOURCES_TABLE_FILEPATH = "../../Datasets/tptr_small/queries/"
+DATA_LAKE_FILEPATH = "../../Datasets/tptr_small/datalake/"
 INTEG_SET_FILEPATH = "../tptr_small_integSet.json"
 all_sources = glob.glob(SOURCES_TABLE_FILEPATH+"*.csv")
 

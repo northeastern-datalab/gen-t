@@ -44,17 +44,17 @@ def get_lake(benchmark):
     return rawLakeDfs, allLakeTableCols
 
 if __name__ == '__main__':
-    benchmark = 'tpch'
-    # benchmark = 'santos_large_tpch'
-    # benchmark = 'tpch_groundtruth'
-    # benchmark = 'tpch_0_groundtruth'
+    benchmark = 'tptr'
+    # benchmark = 'santos_large_tptr'
+    # benchmark = 'tptr_groundtruth'
+    # benchmark = 'tptr_0_groundtruth'
     # benchmark = 't2d_gold'
-    # benchmark = 'tpch_small'
-    # benchmark = 'tpch_large'
+    # benchmark = 'tptr_small'
+    # benchmark = 'tptr_large'
     # benchmark = 'TUS_t2d_gold'
     # benchmark = 'wdc_t2d_gold'
     runStarmie = 0
-    if benchmark == 'santos_large_tpch':
+    if benchmark == 'santos_large_tptr':
         runStarmie = 1
     saveMT = 1
     

@@ -173,7 +173,7 @@ def main(benchmark, sourceTableName, sim_threshold, rawLakeDfs, allLakeTableCols
     '''
     Get Tables whose columns have high set overlap with Source Table's columns
     Args:
-        benchmark: benchmark name (e.g. 'tpch')
+        benchmark: benchmark name (e.g. 'tptr')
         sourceTableName: name of the Source Table
         sim_threshold (tau): similarity threshold 
         includeStarmie: discover candidate tables from tables returned using Starmie

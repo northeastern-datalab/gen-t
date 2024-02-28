@@ -13,7 +13,7 @@ from calcDivergence import table_Dkl,getQueryConditionalVals
 
 all_views_filepath = "../tptr_small_outputs/"
 save_results_folderpath = "tptr_small/"
-source_tables_filepath = "/Users/gracefan/Documents/Datasets/tpch_small/queries/"
+source_tables_filepath = "../../Datasets/tptr_small/queries/"
 def num_similar_values(df1, df2):
     '''
     Find size of value overlap between two columns from two DFs with the highest overlap

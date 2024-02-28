@@ -238,7 +238,7 @@ def main(benchmark, sourceTableName='source'):
     foundPaths = []
     print("\t=========== Source Table: %s =========== " % (sourceTableName))
     sourceTable = pd.read_csv(FILEPATH+"queries/"+sourceTableName)
-    # ==== TPCH Datalake
+    # ==== TPTR Datalake
     # Primary Key is first column in dataframe
     primaryKey = sourceTable.columns.tolist()[0]
     foreignKeys = [colName for colName in sourceTable.columns.tolist() if 'key' in colName and colName != primaryKey]

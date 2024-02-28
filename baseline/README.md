@@ -16,7 +16,7 @@ To run this baseline (in folder `ver-main/`):
 python run_ver.py
 ```
 This calls add_csv_tables.py that performs preprocessing (e.g., indexing each source table's integration set, found in `tptr_small_integSet.json`).
-To evaluate the results, you can run evaluate_projected_outputs.py. The output tables from Ver are in folder `ver_outputs/tptr_small`, and the results reported in the paper are found in `ver_outputs/Ver_proj_result_stats.json`.
+Ver produces list of views that are recorded in `materialized_views_fullDL.json`. To evaluate the results, you can run evaluate_projected_outputs.py. The output tables from Ver are in folder `ver_outputs/tptr_small`, and the results reported in the paper are found in `ver_outputs/Ver_proj_result_stats.json`.
 
 ## Baseline: LLM
 We also use OpenAI's LLM, ChatGPT3.5, as a baseline. To do so, we generate a prompt that includes our problem definition, a source table, and its integration set (`tptr_small_integSet.json`). To generate this prompt (in folder `llm_baseline/`):

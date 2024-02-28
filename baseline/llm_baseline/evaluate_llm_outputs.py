@@ -9,7 +9,7 @@ from evaluatePaths import setTDR, bestMatchingTuples, instanceSimilarity
 from calcDivergence import table_Dkl,getQueryConditionalVals
 
 
-SOURCES_TABLE_FILEPATH = "/Users/gracefan/Documents/Datasets/tpch_small/queries/"
+SOURCES_TABLE_FILEPATH = "../../Datasets/tptr_small/queries/"
 EXPSTATS_OUTPUT_DIR = "./llm_outputs/"
 
 

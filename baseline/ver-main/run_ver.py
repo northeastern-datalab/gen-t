@@ -5,8 +5,8 @@ import glob
 from tqdm import tqdm
 import time
 
-SOURCES_TABLE_FILEPATH = "/Users/gracefan/Documents/Datasets/tpch_small/queries/"
-previous_output_filepath = "materialized_tptr_small_sample_views_fullDL.json"
+SOURCES_TABLE_FILEPATH = "../../Datasets/tptr_small/queries/"
+previous_output_filepath = "materialized_views_fullDL.json"
 with open(previous_output_filepath) as f: source_views = json.load(f)
 
 all_sources = glob.glob(SOURCES_TABLE_FILEPATH+"*.csv")

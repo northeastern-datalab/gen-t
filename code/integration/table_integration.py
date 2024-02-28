@@ -613,7 +613,7 @@ def labelNulls(candidate_tables, source_table, keyCols):
 def loadCandidateTables(benchmark, sourceTableName, originatingTablesDict):
     originalBenchmark = benchmark
     if '_groundtruth' in benchmark: 
-        originalBenchmark = 'tpch'
+        originalBenchmark = 'tptr'
         if '_mtTables_groundtruth' in benchmark: originalBenchmark = benchmark
     print("originalBenchmark", originalBenchmark)
     FILEPATH = '/home/gfan/Datasets/%s/' % (originalBenchmark)

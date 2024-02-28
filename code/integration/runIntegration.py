@@ -14,16 +14,16 @@ from calcDivergence import table_Dkl,getQueryConditionalVals
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--benchmark", type=str, default="tpch", choices=['tpch', 'santos_large_tpch', 'tpch_groundtruth', 'tpch_small', 'tpch_large',
+    parser.add_argument("--benchmark", type=str, default="tptr", choices=['tptr', 'santos_large_tptr', 'tptr_groundtruth', 'tptr_small', 'tptr_large',
                                                                           't2d_gold', 'TUS_t2d_gold', 'wdc_t2d_gold'])
-    parser.add_argument("--timeout", type=int, default=25263) # 7 hrs for tpch
+    parser.add_argument("--timeout", type=int, default=25263) # 7 hrs for tptr
     parser.add_argument("--genT", type=int, default=1) # 1 if candidate tables were pruned to originating tables in Gen-T, else 0
     parser.add_argument("--doPS", type=int, default=1) # 1 if perform projection and selection, else 0
     
     hp = parser.parse_args()
     
     benchmark = hp.benchmark
-    # benchmark = 'santos_large_tpch'
+    # benchmark = 'santos_large_tptr'
     
     OUTPUT_DIR = "output_tables/%s/"%(benchmark)
     if hp.genT:
@@ -68,7 +68,7 @@ if __name__ == '__main__':
         print("\t=========== %d) Source Table: %s =========== " % (indx, source_table))
         print("Source has %d cols, %d rows --> %d total values" % (sourceDf.shape[1], sourceDf.shape[0], sourceDf.shape[0]*sourceDf.shape[1]))
         primaryKey = sourceDf.columns.tolist()[0]
-        foreignKeys = [colName for colName in sourceDf.columns.tolist() if 'key' in colName and colName != primaryKey] # for tpch
+        foreignKeys = [colName for colName in sourceDf.columns.tolist() if 'key' in colName and colName != primaryKey] # for tptr
         if 't2d_gold' in benchmark:
             # ==== T2D_GOLD Datalake
             # Get another primary key if the first column only has NaN's
@@ -124,7 +124,7 @@ if __name__ == '__main__':
                                                 'F1_Score': f1_score}
         
         curr_metrics = [TDR_recall, TDR_precision, instanceSim, tableDkl, time.time() - startTime]
-        if 'tpch' in benchmark and not timed_out and not noCandidates:
+        if 'tptr' in benchmark and not timed_out and not noCandidates:
             if 'psql_many' in source_table:
                 for metricIdx, metric_dict in enumerate([allTDR_recall, allTDR_prec, allInstanceSim, allDkl, allRuntimes]):
                     if 'manyJoins' not in metric_dict:

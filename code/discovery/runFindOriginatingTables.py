@@ -17,12 +17,12 @@ from tqdm import tqdm
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--benchmark", type=str, default="tpch", choices=['tpch', 'santos_large_tpch', 'tpch_groundtruth', 'tpch_small', 'tpch_large',
+    parser.add_argument("--benchmark", type=str, default="tptr", choices=['tptr', 'santos_large_tptr', 'tptr_groundtruth', 'tptr_small', 'tptr_large',
                                                                           't2d_gold', 'TUS_t2d_gold', 'wdc_t2d_gold'])
     parser.add_argument("--saveMT", type=int, default=1)
     hp = parser.parse_args()
     runStarmie = 0
-    if hp.benchmark == 'santos_large_tpch':
+    if hp.benchmark == 'santos_large_tptr':
         runStarmie = 1
     
     FILEPATH = '/home/gfan/Datasets/%s/queries/' % (hp.benchmark)  

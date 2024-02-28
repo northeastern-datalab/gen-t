@@ -18,19 +18,19 @@ if __name__ == '__main__':
     # benchmark = 'TUS_t2d_gold'
     # benchmark = 'wdc_t2d_gold'
     # timeout = 100 # 100 seconds for t2d
-    # ========= TPCH Variations
-    # benchmark = 'santos_large_tpch'
-    benchmark = 'tpch'
-    # benchmark = 'tpch_groundtruth'
-    # benchmark = 'tpch_0_groundtruth'
-    # benchmark = 'tpch_mtTables'
+    # ========= TPTR Variations
+    # benchmark = 'santos_large_tptr'
+    benchmark = 'tptr'
+    # benchmark = 'tptr_groundtruth'
+    # benchmark = 'tptr_0_groundtruth'
+    # benchmark = 'tptr_mtTables'
     timeout = 1800
     projSel = 1
     
     outputDir = "output_tables/"
     if projSel: outputDir = "output_tables_projSel/"
     # FILEPATH = '../../Datasets/%s/queries/' % (benchmark)  
-    FILEPATH = '../../Datasets/%s/queries/' % ('tpch')  
+    FILEPATH = '../../Datasets/%s/queries/' % ('tptr')  
     # FILEPATH = '../../Datasets/%s/queries/' % ('t2d_gold')  
     sources = glob.glob(FILEPATH+'*.csv')
     allTDR_recall, allTDR_prec, allInstanceSim, allDkl = {k: [] for k in ['simple', 'oneJoin', 'manyJoins', 'all']}, {k: [] for k in ['simple', 'oneJoin', 'manyJoins', 'all']}, {k: [] for k in ['simple', 'oneJoin', 'manyJoins', 'all']}, {k: [] for k in ['simple', 'oneJoin', 'manyJoins', 'all']}
@@ -47,7 +47,7 @@ if __name__ == '__main__':
         sourceDf.columns = [col.replace("'", '') for col in sourceDf.columns]
         
         candidateFileName = benchmark
-        if 'tpch' in benchmark:
+        if 'tptr' in benchmark:
             b_list = benchmark.split('_')
             b_list.insert(1,'small')
             candidateFileName = '_'.join(b_list)
@@ -59,7 +59,7 @@ if __name__ == '__main__':
         to_json.main(benchmark, source_table, projSel)
         print("\t\t\t=========== BEGIN Auto-Pipeline ===========")
         primaryKey = sourceDf.columns.tolist()[0]
-        foreignKeys = [colName for colName in sourceDf.columns.tolist() if 'key' in colName and colName != primaryKey] # for tpch
+        foreignKeys = [colName for colName in sourceDf.columns.tolist() if 'key' in colName and colName != primaryKey] # for tptr
         if 't2d_gold' in benchmark:
             # ==== T2D_GOLD Datalake
             # Get another primary key if the first column only has NaN's
@@ -115,7 +115,7 @@ if __name__ == '__main__':
 
         print("=== FINISHED Source %s with \n TDR Recall = %.3f, TDR Precision = %.3f, instanceSim = %.3f, KL-DIVERGENCE = %.3f  === " % (source_table, TDR_recall, TDR_precision, instanceSim, tableDkl))
         print("\t\t\t=========== FINISHED in %.3f seconds (%.3f minutes) =================================" % ((time.time() - startTime), (time.time() - startTime)/60))
-        if 'tpch' in benchmark:
+        if 'tptr' in benchmark:
             if 'psql_many' in source_table:
                 allTDR_recall['manyJoins'].append(TDR_recall)
                 allTDR_prec['manyJoins'].append(TDR_precision)
@@ -156,7 +156,7 @@ if __name__ == '__main__':
     print("\t\t Average Size of Output: %d" % (sum(avgSizeOutput)/len(avgSizeOutput)))
     print("\t\t Average Ratio of Output Size: %.3f" % (sum(avgSizeRatio)/len(avgSizeRatio)))
 
-    if 'tpch' in benchmark:
+    if 'tptr' in benchmark:
         print("\t\t\t=========== BREAK-DOWN OF RESULTS ===========")
         print("PROJ/SEL Queries: TDR Recall: %.3f, TDR Precision: %.3f, Instance Sim: %.3f, Dkl: %.3f" % (sum(allTDR_recall['simple'])/len(allTDR_recall['simple']), sum(allTDR_prec['simple']) / len(allTDR_prec['simple']), sum(allInstanceSim['simple']) / len(allInstanceSim['simple']), sum(allDkl['simple']) / len(allDkl['simple'])))
         print("\tRuntime: %.3f sec" % (sum(allRuntimes['simple']) / len(allRuntimes['simple'])))

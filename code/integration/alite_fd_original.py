@@ -566,7 +566,7 @@ def FDAlgorithm(candidate_tables, source_table, cluster, timeout):
 
 def loadCandidateTables(benchmark, sourceTableName, candidateTableDict, performProjSel):
     FILEPATH = '/home/gfan/Datasets/%s/' % (benchmark)
-    if '_groundtruth' in benchmark: FILEPATH = '/home/gfan/Datasets/%s/' % ('santos_large_tpch')
+    if '_groundtruth' in benchmark: FILEPATH = '/home/gfan/Datasets/%s/' % ('santos_large_tptr')
     print("FILEPATH: ", FILEPATH)
     sourceTable = pd.read_csv(FILEPATH+"queries/"+sourceTableName)
     primaryKey = sourceTable.columns.tolist()[0]

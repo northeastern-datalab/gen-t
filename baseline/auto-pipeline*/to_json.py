@@ -79,7 +79,7 @@ def restructureDf(originalDf):
 
 def main(benchmark, sourceTableName, projSel=0):
     FILEPATH = '../../Datasets/%s/' % (benchmark)  
-    if '_groundtruth' in benchmark or '_mtTables' in benchmark: FILEPATH = '../../Datasets/%s/' % ('tpch')  
+    if '_groundtruth' in benchmark or '_mtTables' in benchmark: FILEPATH = '../../Datasets/%s/' % ('tptr')  
     sourceTable = pd.read_csv(FILEPATH+"queries/"+sourceTableName)#, header=None)
     sourceTable.columns = [col.replace("'", '') for col in sourceTable.columns]
     # remove apostrophe
@@ -90,13 +90,13 @@ def main(benchmark, sourceTableName, projSel=0):
     DATA_PATH = FILEPATH+'datalake/'
     
     candidateFileName = benchmark
-    if 'tpch' in benchmark:
-        # candidateFileName = 'tpch_small'
+    if 'tptr' in benchmark:
+        # candidateFileName = 'tptr_small'
         b_list = benchmark.split('_')
         b_list.insert(1,'small')
         candidateFileName = '_'.join(b_list)
     print("candidateFileName", candidateFileName)
-    candidateTableDict = loadDictionaryFromPickleFile("/Users/gracefan/Documents/Meetings with Renee/auto-pipeline/results_candidate_tables/%s/%s_candidateTables.pkl" % (candidateFileName, sourceTableName))
+    candidateTableDict = loadDictionaryFromPickleFile("../results_candidate_tables/%s/%s_candidateTables.pkl" % (candidateFileName, sourceTableName))
     print("Reformatting %d Candidate Tables" % (len(candidateTableDict)))
     
     tableDfs = {}

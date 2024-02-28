@@ -21,7 +21,7 @@ def offline_professing(ver, source_name, runOnIntegSet, integration_set_dict, pa
     # Add csv files to the sources list 
     if runOnIntegSet:
         # get integration set for each source table
-        csv_files = integration_set_dict[source_name.split("_sample")[0]+".csv"] # TODO: remove .split("_sample")[0]+".csv"
+        csv_files = integration_set_dict[source_name]
     else:
         # get all data lake tables for each source table
         csv_files = [file.split("/")[-1] for file in glob.glob(path_to_csv_files+"/*.csv")]
@@ -34,8 +34,8 @@ def offline_professing(ver, source_name, runOnIntegSet, integration_set_dict, pa
     
 def main(source_table, runOnIntegSet=1):
     
-    path_to_csv_files = "/Users/gracefan/Documents/Datasets/tpch_small/datalake"
-    profile_path = "/Users/gracefan/Documents/Datasets/tpch_small/data_profiles"
+    path_to_csv_files = "../../Datasets/tptr_small/datalake"
+    profile_path = "../../Datasets/tptr_small/data_profiles"
     ver = VerCLI()
     
     if runOnIntegSet:

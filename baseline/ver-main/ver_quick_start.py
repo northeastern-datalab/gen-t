@@ -94,8 +94,8 @@ def main(qt):
         Materialize join graphs
         """
         ## PARAMETERS: EDIT
-        data_path = '/Users/gracefan/Documents/Datasets/tpch_small/datalake/'  # path where the raw data is stored
-        output_path = './tptr_small_sample_outputs/%s/%s/'%(qt.split("/")[-1],",".join(list(qt_df.columns)))  # path to store the output views
+        data_path = '../../Datasets/tptr_small/datalake/'  # path where the raw data is stored
+        output_path = './tptr_small_outputs/%s/%s/'%(qt.split("/")[-1],",".join(list(qt_df.columns)))  # path to store the output views
         max_num_views = 100  # how many views you want to materialize
         sep = ','  # csv separator
 
@@ -179,7 +179,7 @@ def main(qt):
         qt_schema = ",".join(list(qt_df.columns))
         found_views = [tpl[0] for tpl in graph_nodes]
         found_views = json.dumps(found_views)
-        json_output_path = "/Users/gracefan/Documents/ver-main/materialized_tptr_small_sample_views_fullDL.json"
+        json_output_path = "/materialized_views_fullDL.json"
         #read existing file and append new data
         loaded_json = {}
         if os.path.exists(json_output_path):

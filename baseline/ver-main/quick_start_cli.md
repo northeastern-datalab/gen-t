@@ -33,8 +33,6 @@ The source file will be stored under `.dsessions/sources/`
 
 ```bash
 python ver_cli.py create_sources_file SOURCE_FILE_NAME
-
-(Real example)  python ver_cli.py create_sources_file tptr 
 ```
 
 ### Add csv files to the sources list
@@ -43,8 +41,6 @@ After creating the empty config file, the next step is to add the folder contain
 
 ```bash
 python ver_cli.py add_csv SOURCE_FILE_NAME CSV_SOURCE_NAME PATH_TO_CSV_FOLDER [--sep DELIMITER]
-
-(Real example)  ver_cli.py add_csv tptr supplier_2_1.csv /Users/gracefan/Documents/Datasets/tpch_small/datalake
 ```
 
 - `SOURCE_FILE_NAME` is the name of the sources file created in the previous step.
@@ -58,8 +54,6 @@ After entering all the data sources, the next step is to profile the data. The f
 
 ```bash
 python ver_cli.py profile SOURCE_FILE_NAME OUTPUT_PROFILE_PATH [--build] [--store_type STORE_TYPE]
-
-(Real example)  python ver_cli.py profile tptr /Users/gracefan/Documents/Datasets/tpch_small/data_profiles
 ```
 
 - `SOURCE_FILE_NAME` is the name of the sources file created in the previous step.
@@ -72,8 +66,6 @@ After building data profiles, the next step is to build discovery index by using
 
 ```bash
 python ver_cli.py build_dindex PROFILE_PATH [--force]
-
-(Real example)  python ver_cli.py build_dindex /Users/gracefan/Documents/Datasets/tpch_small/data_profiles
 ```
 - `PROFILE_PATH` is the path to the folder where the data profiles are stored.
 - `--force` is an optional flag to force the re-building of the discovery index.
