@@ -1,5 +1,5 @@
 # Gen-T: Table Reclamation in Data Lakes
-Supplementary Materials for [Gen-T: Table Reclamation in Data Lakes](https://arxiv.org/abs/2403.14128).
+[Gen-T: Table Reclamation in Data Lakes](https://arxiv.org/abs/2403.14128), published in [ICDE 2024](https://icde2024.github.io/).
 
 The codes for Gen-T and ALITE and its variations are in the `codes/` folder, and the code for an implementation of the baselines Auto-Pipeline and Ver is in the `baseline/` folder. 
 
